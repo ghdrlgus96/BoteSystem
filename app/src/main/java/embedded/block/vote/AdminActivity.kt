@@ -11,7 +11,7 @@ import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
-
+//제허짱
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 

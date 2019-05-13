@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+//ㅇㅇ
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

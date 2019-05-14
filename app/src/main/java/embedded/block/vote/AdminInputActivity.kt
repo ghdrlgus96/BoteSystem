@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
@@ -30,8 +31,8 @@ class AdminInputActivity : AppCompatActivity() {
                     select = select + view.textView_admin_input_item1.text + " "
             }
             Toast.makeText(this,select + "선택됨",Toast.LENGTH_SHORT).show()
+            setResult(0, intent.putExtra("key", select))
             finish()
-            //findViewById<TextView>(R.id.textView_admin_input_selectedText).text = "가나다"
         }
     }
 }

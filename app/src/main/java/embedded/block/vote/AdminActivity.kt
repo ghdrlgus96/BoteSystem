@@ -72,12 +72,11 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         when (item.itemId) {
             R.id.nav_home -> {
                 admin_content.addView(View.inflate(this, R.layout.admin_input, null))
-                button_admin_input.setOnClickListener { v : View? ->
+                button_admin_input.setOnClickListener { v: View? ->
                     //startActivity(Intent(this, AdminInputActivity::class.java))
                     val intent = Intent(this, AdminInputActivity::class.java)
-                    startActivity(intent)
+                    startActivityForResult(intent, 0)
                 }
-
             }
             R.id.nav_gallery -> {
 
@@ -98,5 +97,12 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            0 -> {textView_admin_input_selectedText.text = data?.getStringExtra("key")}
+        }
     }
 }

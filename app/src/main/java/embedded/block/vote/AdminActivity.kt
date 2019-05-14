@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
@@ -10,10 +11,15 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log.d
 import android.view.*
 import kotlinx.android.synthetic.main.admin_input.*
+import kotlinx.android.synthetic.main.admin_stop.*
+import kotlinx.android.synthetic.main.admin_stop_item.*
+import kotlinx.android.synthetic.main.admin_stop_item.view.*
 import kotlinx.android.synthetic.main.content_admin.*
 
 //제허짱
@@ -50,7 +56,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             super.onBackPressed()
         }
     }
-
+    /*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.admin, menu)
@@ -66,11 +72,12 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+*/
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
+                admin_content.removeAllViewsInLayout()
                 admin_content.addView(View.inflate(this, R.layout.admin_input, null))
                 button_admin_input.setOnClickListener { v: View? ->
                     //startActivity(Intent(this, AdminInputActivity::class.java))
@@ -79,9 +86,31 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
             }
             R.id.nav_gallery -> {
-
             }
             R.id.nav_slideshow -> {
+                admin_content.removeAllViewsInLayout()
+                admin_content.addView(View.inflate(this, R.layout.admin_stop, null))
+                var adapter = AdminStopAdapter(this)
+                listView_admin_stoplist.adapter = adapter
+                /*
+                for(i in 0..(adapter.count-1)) {
+                    val view = listView_admin_stoplist.getChildAt(i)
+                    view.button_admin_stopButton.setOnClickListener { v: View? ->
+                        /*
+                        val alertDialogBuilder = AlertDialog.Builder(this)
+                        alertDialogBuilder.setTitle("투표 종료")
+                        alertDialogBuilder.setMessage("정말 투표를 종료하시겠습니까?")
+                        alertDialogBuilder.setCancelable(false)
+                        alertDialogBuilder.setPositiveButton("삭제") { dialog, id ->
+
+                        }
+                        alertDialogBuilder.setNegativeButton("취소") { dialog, id ->
+
+                        }
+                        */
+                    }
+                }
+                */
 
             }
             R.id.nav_tools -> {

@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.admin_input.*
 import kotlinx.android.synthetic.main.content_admin.*
 
 //제허짱
+//성빈이 왔다감
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,19 +1,23 @@
 package embedded.block.vote
 
+import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.MenuItem
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.Menu
+import android.view.*
+import kotlinx.android.synthetic.main.admin_input.*
+import kotlinx.android.synthetic.main.content_admin.*
+
 //제허짱
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +70,13 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
+                admin_content.addView(View.inflate(this, R.layout.admin_input, null))
+                button_admin_input.setOnClickListener { v : View? ->
+                    //startActivity(Intent(this, AdminInputActivity::class.java))
+                    val intent = Intent(this, AdminInputActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
             R.id.nav_gallery -> {
 

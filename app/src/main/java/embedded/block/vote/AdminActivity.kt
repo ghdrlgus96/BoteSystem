@@ -85,7 +85,13 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     startActivityForResult(intent, 0)
                 }
             }
-            R.id.nav_gallery -> {
+            R.id.nav_start -> {
+                admin_content.addView(View.inflate(this, R.layout.admin_start, null))
+                button_admin_input.setOnClickListener { v: View? ->
+                    //startActivity(Intent(this, AdminInputActivity::class.java))
+                    val intent = Intent(this, AdminVoteStart::class.java)
+                    startActivity(intent)
+                }
             }
             R.id.nav_slideshow -> {
                 admin_content.removeAllViewsInLayout()

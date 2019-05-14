@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 //제허짱
+//성빈이 왔다감
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 

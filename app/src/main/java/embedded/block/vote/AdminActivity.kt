@@ -86,11 +86,11 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
             }
             R.id.nav_start -> {
-                admin_content.addView(View.inflate(this, R.layout.admin_start, null))
+                //admin_content.addView(View.inflate(this, R.layout.admin_start, null))
                 button_admin_input.setOnClickListener { v: View? ->
                     //startActivity(Intent(this, AdminInputActivity::class.java))
-                    val intent = Intent(this, AdminVoteStart::class.java)
-                    startActivity(intent)
+                    //val intent = Intent(this, AdminVoteStart::class.java)
+                    //startActivity(intent)
                 }
             }
             R.id.nav_slideshow -> {

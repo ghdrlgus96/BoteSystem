@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -18,15 +19,37 @@ class LoginActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //setTheme(android.R.style.Theme_NoDisplay)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        testButton.setOnClickListener {
-            test("http://203.249.127.32:65001/test", testEdit.text.toString())
+        regBtn.setOnClickListener {
+            var intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        loginBtn.setOnClickListener {
+
+        }
+
+        findID.setOnClickListener {
+            var intent = Intent(this, FindidActivity::class.java)
+            startActivity(intent)
+        }
+
+        findPass.setOnClickListener {
+            var intent = Intent(this, FindpassActivity::class.java)
+            startActivity(intent)
         }
     }
 
+    //user 정보 저장합니다
+    companion object {
+
+    }
+
     //get
+    /*
     fun test(msg: String?, id: String?) {
         var json = JSONObject()
         json.put("myid", "null!")    //매개변수 넣기 위해 넣은거다 전혀 쓰잘대기 없다
@@ -50,4 +73,5 @@ class LoginActivity : AppCompatActivity() {
         }
         queue.add(request)
     }
+    */
 }

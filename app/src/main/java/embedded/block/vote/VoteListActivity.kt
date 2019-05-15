@@ -1,9 +1,10 @@
-package com.example.testfile
+package embedded.block.vote
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
+import embedded.block.vote.VoteListPagerAdapter
 import embedded.block.vote.R
 
 //(제헌)투표목록 화면 Mainactivity

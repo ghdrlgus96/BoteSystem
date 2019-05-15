@@ -1,4 +1,6 @@
-package com.example.testfile
+package embedded.block.vote
+
+import embedded.block.vote.VoteListRecyclerAdapter
 
 //껍데기 구현 데이터베이스 가져오는법 알면 수정할 것
 

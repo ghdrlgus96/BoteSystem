@@ -1,4 +1,4 @@
-package com.example.testfile
+package embedded.block.vote
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

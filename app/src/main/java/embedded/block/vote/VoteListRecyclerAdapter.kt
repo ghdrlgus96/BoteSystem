@@ -1,4 +1,4 @@
-package com.example.testfile
+package embedded.block.vote
 
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import embedded.block.vote.R
+import embedded.block.vote.VoteData
+import embedded.block.vote.VoteItem
 import kotlinx.android.synthetic.main.list_item_shop.view.*
 
 

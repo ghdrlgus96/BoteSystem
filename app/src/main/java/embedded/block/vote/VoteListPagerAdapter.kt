@@ -1,8 +1,11 @@
-package com.example.testfile
+package embedded.block.vote
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import embedded.block.vote.FirstFragment
+import embedded.block.vote.SecondFragment
+import embedded.block.vote.ThirdFragment
 
 class VoteListPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm)
 {

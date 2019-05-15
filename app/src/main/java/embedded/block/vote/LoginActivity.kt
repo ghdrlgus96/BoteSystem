@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener {
-
+            login(myID.text.toString(), myPass.text.toString())
         }
 
         findID.setOnClickListener {
@@ -43,24 +44,24 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    //user 정보 저장합니다
-    companion object {
-
-    }
-
     //get
-    /*
-    fun test(msg: String?, id: String?) {
+    fun login(myid: String?, mypass: String?) {
         var json = JSONObject()
-        json.put("myid", "null!")    //매개변수 넣기 위해 넣은거다 전혀 쓰잘대기 없다
+        json.put("myid", "null!")
         Log.d("embedded", json.toString())
         var queue: RequestQueue = Volley.newRequestQueue(this);
-        val request = object : JsonObjectRequest(Request.Method.GET, msg + "/?myid=" + id, json,
+        val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
             Response.Listener { response ->
                 run {
                     Log.d("embedded", response.toString())
-                    //json 뽑아 오는법
-                    testText.text = response.getString("eee") + "   " + response.getString("ggg")
+                    userId = response.getString("userid")
+                    userPass = response.getString("userpass")
+                    userName = response.getString("username")
+                    userNum = response.getString("usernum")
+                    userClass = null
+                    userPhone = response.getString("userphone")
+                    userAuthor = response.getString("userauthor")
+
                 }
             }, null
         ) {
@@ -73,5 +74,15 @@ class LoginActivity : AppCompatActivity() {
         }
         queue.add(request)
     }
-    */
+
+    //user 정보 저장합니다
+    companion object {
+        var userId = ""
+        var userPass = ""
+        var userName = ""
+        var userNum = ""
+        var userClass: Array<String>? = null
+        var userPhone = ""
+        var userAuthor = ""
+    }
 }

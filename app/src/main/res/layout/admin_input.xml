@@ -27,11 +27,10 @@
             android:id="@+id/button_admin_input" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="144dp"
             android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/editText3"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_admin_input_selectedText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:layout_marginTop="116dp"
+    <ListView
+            android:layout_width="395dp"
+            android:layout_height="509dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/button_admin_input" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:text="참여자 선택 전"/>
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/listView_admin_input_selected"/>
 </android.support.constraint.ConstraintLayout>

@@ -14,13 +14,24 @@ import android.support.design.widget.NavigationView
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.util.Log.d
 import android.view.*
+import android.widget.ArrayAdapter
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import embedded.block.vote.AdminInputAdapter.Companion.arr_getParticipation
 import kotlinx.android.synthetic.main.admin_input.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.admin_stop_item.*
 import kotlinx.android.synthetic.main.admin_stop_item.view.*
 import kotlinx.android.synthetic.main.content_admin.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 //제허짱
 //성빈이 왔다감
@@ -32,11 +43,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
@@ -79,8 +85,8 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_home -> {
                 admin_content.removeAllViewsInLayout()
                 admin_content.addView(View.inflate(this, R.layout.admin_input, null))
+
                 button_admin_input.setOnClickListener { v: View? ->
-                    //startActivity(Intent(this, AdminInputActivity::class.java))
                     val intent = Intent(this, AdminInputActivity::class.java)
                     startActivityForResult(intent, 0)
                 }
@@ -97,26 +103,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 admin_content.addView(View.inflate(this, R.layout.admin_stop, null))
                 var adapter = AdminStopAdapter(this)
                 listView_admin_stoplist.adapter = adapter
-                /*
-                for(i in 0..(adapter.count-1)) {
-                    val view = listView_admin_stoplist.getChildAt(i)
-                    view.button_admin_stopButton.setOnClickListener { v: View? ->
-                        /*
-                        val alertDialogBuilder = AlertDialog.Builder(this)
-                        alertDialogBuilder.setTitle("투표 종료")
-                        alertDialogBuilder.setMessage("정말 투표를 종료하시겠습니까?")
-                        alertDialogBuilder.setCancelable(false)
-                        alertDialogBuilder.setPositiveButton("삭제") { dialog, id ->
-
-                        }
-                        alertDialogBuilder.setNegativeButton("취소") { dialog, id ->
-
-                        }
-                        */
-                    }
-                }
-                */
-
             }
             R.id.nav_tools -> {
 
@@ -136,7 +122,21 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
-            0 -> {textView_admin_input_selectedText.text = data?.getStringExtra("key")}
+            0 -> {
+                var arr = data?.getIntegerArrayListExtra("key")
+                var temp = AdminInputAdapter.arr_getParticipation
+                var temp2 = ArrayList<JSONObject>()
+                var temp3 = ArrayList<String>()
+                for(i in 0..(arr!!.size-1)) {
+                    temp2.add(temp.getJSONObject(arr[i]))
+                    temp3.add(temp.getJSONObject(arr[i]).getString("userName"))
+                }
+                var adpater= ArrayAdapter(this, android.R.layout.simple_list_item_1, temp3)
+                listView_admin_input_selected.adapter = adpater
+                adpater.notifyDataSetChanged()
+
+            }
         }
     }
+
 }

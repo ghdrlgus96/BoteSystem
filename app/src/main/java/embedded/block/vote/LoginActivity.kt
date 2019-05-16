@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.test.*
 import org.json.JSONObject
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -45,23 +46,43 @@ class LoginActivity : AppCompatActivity() {
     }
 
     //get
-    fun login(myid: String?, mypass: String?) {
+    fun login(myid: String, mypass: String) {
         var json = JSONObject()
         json.put("myid", "null!")
-        Log.d("embedded", json.toString())
+        //Log.d("embedded", json.toString())
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
             Response.Listener { response ->
                 run {
-                    Log.d("embedded", response.toString())
-                    userId = response.getString("userid")
-                    userPass = response.getString("userpass")
-                    userName = response.getString("username")
-                    userNum = response.getString("usernum")
-                    userClass = null
-                    userPhone = response.getString("userphone")
-                    userAuthor = response.getString("userauthor")
 
+
+                    if(response.getString("userauthor") != "undefined") {
+                        var tmp = response.getString("userclassnum")
+                        var tempList = tmp.split(",")
+
+                        //로그아웃 시 userClass는 비워주자 아니면 자꾸 추가됨
+                        for (i in 0..tempList.size - 1)
+                            userClass.add(tempList.get(i))
+
+                        userId = myid
+                        userPass = mypass
+                        userName = response.getString("username")
+                        userNum = response.getString("usernum")
+                        userPhone = response.getString("userphone")
+                        userAuthor = response.getString("userauthor")
+
+                        if(userAuthor == "1") {
+                            var intent = Intent(this, AdminActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else if(userAuthor == "2") {
+
+                        }
+
+                    }
+                    else {
+                        Toast.makeText(this, "아이디 혹은 비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }, null
         ) {
@@ -81,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
         var userPass = ""
         var userName = ""
         var userNum = ""
-        var userClass: Array<String>? = null
+        var userClass = ArrayList<String>()
         var userPhone = ""
         var userAuthor = ""
     }

@@ -76,7 +76,8 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
                         else if(userAuthor == "2") {
-
+                            var intent = Intent(this, VoteListActivity::class.java)
+                            startActivity(intent)
                         }
 
                     }

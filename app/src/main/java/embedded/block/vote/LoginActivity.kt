@@ -53,8 +53,8 @@ class LoginActivity : AppCompatActivity() {
             Response.Listener { response ->
                 run {
 
-
-                    if(response.getString("userauthor") != "undefined") {
+                    Log.d("embedded", response.toString())
+                    if(response.getString("userauthor") != "undefind") {
                         var tmp = response.getString("userclassnum")
                         var tempList = tmp.split(",")
 

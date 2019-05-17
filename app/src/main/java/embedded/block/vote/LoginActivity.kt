@@ -77,7 +77,9 @@ class LoginActivity : AppCompatActivity() {
                             var intent = Intent(this, VoteListActivity::class.java)
                             startActivity(intent)
                         }
-
+                        else if(userAuthor == "3") {
+                            Toast.makeText(this, "회원 탈퇴한 정보입니다", Toast.LENGTH_SHORT).show()
+                        }
                     }
                     else {
                         Toast.makeText(this, "아이디 혹은 비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show()

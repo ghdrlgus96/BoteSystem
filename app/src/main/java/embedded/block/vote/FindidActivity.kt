@@ -24,7 +24,7 @@ class FindidActivity : AppCompatActivity() {
             findId(findIDNameText.text.toString(), findIDPhoneText.text.toString())
         }
     }
-
+//
     fun findId(name: String?, phone: String?) {
         var json = JSONObject()
         json.put("myname", name)

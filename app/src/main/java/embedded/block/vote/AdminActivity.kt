@@ -62,6 +62,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             super.onBackPressed()
         }
     }
+
     /*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -121,21 +122,29 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode) {
+        when (requestCode) {
             0 -> {
-                var arr = data?.getIntegerArrayListExtra("key")
-                var temp = AdminInputAdapter.arr_getParticipation
-                var temp2 = ArrayList<JSONObject>()
-                var temp3 = ArrayList<String>()
-                for(i in 0..(arr!!.size-1)) {
-                    temp2.add(temp.getJSONObject(arr[i]))
-                    temp3.add(temp.getJSONObject(arr[i]).getString("userName"))
-                }
-                var adpater= ArrayAdapter(this, android.R.layout.simple_list_item_1, temp3)
-                listView_admin_input_selected.adapter = adpater
-                adpater.notifyDataSetChanged()
+                when (resultCode) {
+                    0 -> {
+                        var arr = data?.getIntegerArrayListExtra("key")
 
+                        var temp = AdminInputAdapter.arr_getParticipation
+                        var temp2 = ArrayList<JSONObject>()
+                        var temp3 = ArrayList<String>()
+                        for (i in 0..(arr!!.size - 1)) {
+                            temp2.add(temp.getJSONObject(arr[i]))
+                            temp3.add(temp.getJSONObject(arr[i]).getString("userName"))
+                        }
+                        var adpater = ArrayAdapter(this, android.R.layout.simple_list_item_1, temp3)
+                        listView_admin_input_selected.adapter = adpater
+                        adpater.notifyDataSetChanged()
+                    }
+                    666 -> {
+                        Log.d("finish", data?.getStringExtra("finish"))
+                    }
+                }
             }
+
         }
     }
 

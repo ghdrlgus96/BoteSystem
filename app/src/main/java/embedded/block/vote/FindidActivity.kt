@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_findid.*
 import org.json.JSONObject
 import java.util.HashMap
-//t
+
 class FindidActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class FindidActivity : AppCompatActivity() {
             findId(findIDNameText.text.toString(), findIDPhoneText.text.toString())
         }
     }
-//
+
     fun findId(name: String?, phone: String?) {
         var json = JSONObject()
         json.put("myname", name)

@@ -44,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    //get
     fun login(myid: String, mypass: String) {
         var json = JSONObject()
         json.put("myid", "null!")

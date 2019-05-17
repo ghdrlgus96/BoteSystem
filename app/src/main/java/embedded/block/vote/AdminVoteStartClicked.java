@@ -22,7 +22,7 @@ public class AdminVoteStartClicked extends AppCompatActivity {
         final String[] day = {"1일","2일","3일","4일","5일","6일","7일"};
 
 
-
+/*
         Spinner spinner = (Spinner) findViewById(R.id.spinnerStart);
         ArrayAdapter adapter = new ArrayAdapter(
                 getApplicationContext(),
@@ -39,5 +39,7 @@ public class AdminVoteStartClicked extends AppCompatActivity {
             }
 
             }
+            */
     }
+
 }

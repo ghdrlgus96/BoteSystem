@@ -19,7 +19,11 @@
         <activity android:name=".RegisterActivity">
         </activity>
         <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".AdminVoteStart">
@@ -29,11 +33,6 @@
                 android:name=".AdminActivity"
                 android:label="@string/title_activity_admin"
                 android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".VoteListActivity"> //제헌 수정
         </activity>

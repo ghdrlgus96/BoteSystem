@@ -15,6 +15,8 @@ import java.util.HashMap
 
 class FindpassActivity : AppCompatActivity() {
 
+    var tempID: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_findpass)
@@ -22,13 +24,11 @@ class FindpassActivity : AppCompatActivity() {
         findPassBtn.setOnClickListener {
             if(findPassID.text.toString() == "아이디") {
                 findPassId(findPassIDText.text.toString())
-                Toast.makeText(this, "아이디 입력하였습니다", Toast.LENGTH_LONG).show()
-                findPassID.text = "비밀번호 찾기 질문: "
+                tempID = findPassIDText.text.toString()
+                findPassIDText.setText("")
             }
             else {
                 findPassword(findPassIDText.text.toString())
-                Toast.makeText(this, "비밀번호 인증 메시지를 입력하였습니다", Toast.LENGTH_LONG).show()
-                finish()
             }
         }
     }
@@ -39,13 +39,14 @@ class FindpassActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.POST, "http://203.249.127.32:65001/bote/find/id", json,
+            Request.Method.GET, "http://203.249.127.32:65001/bote/find/password/getquestion/?myid=" + id, json,
             Response.Listener { response ->
                 run {
-                    if(response.getString("userid") == "undefind")
+                    if(response.getString("mypassquestion") == "undefind")
                         Toast.makeText(this, "정확한 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    else
-                        Toast.makeText(this, response.getString("userid"), Toast.LENGTH_SHORT).show()
+                    else {
+                        findPassID.text = "비밀번호 찾기 질문: " + response.getString("mypassquestion")
+                    }
                 }
             }, null
         ) {
@@ -59,7 +60,32 @@ class FindpassActivity : AppCompatActivity() {
         queue.add(request)
     }
 
-    fun findPassword(passAnser: String?) {
+    fun findPassword(passAnswer: String?) {
+        var json = JSONObject()
+        json.put("myid", tempID)
+        json.put("myanswer", passAnswer)
 
+        var queue: RequestQueue = Volley.newRequestQueue(this);
+        val request = object : JsonObjectRequest(
+            Request.Method.POST, "http://203.249.127.32:65001/bote/find/password/index", json,
+            Response.Listener { response ->
+                run {
+                    if(response.getString("mypass") == "undefind")
+                        Toast.makeText(this, "답변이 잘못되었습니다", Toast.LENGTH_SHORT).show()
+                    else {
+                        Toast.makeText(this, response.getString("mypass"), Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            }, null
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String>? {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
+        }
+        queue.add(request)
     }
 }

@@ -13,46 +13,54 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/regIDText" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="40dp" android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/regIdButton"/>
+            android:layout_marginEnd="44dp"
+            app:layout_constraintStart_toEndOf="@+id/regID"
+            android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/regNameText" app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
             android:text="아이디"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regID" android:textStyle="bold"
             android:fontFamily="sans-serif-black" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="45dp"
-            android:layout_marginTop="86dp" app:layout_constraintTop_toBottomOf="@+id/regName"/>
+            android:layout_marginStart="48dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/regName"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/regNameText" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="45dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="86dp"/>
+            android:layout_marginEnd="45dp"
+            app:layout_constraintStart_toEndOf="@+id/regName" android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
             android:text="이름"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regName" android:textStyle="bold"
             android:fontFamily="sans-serif-black" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="52dp"
-            android:layout_marginTop="86dp" app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="56dp" android:layout_marginTop="72dp"
+            app:layout_constraintTop_toTopOf="parent"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/regPhoneText"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp" android:layout_marginTop="27dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText8"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/reganswerText" app:layout_constraintStart_toEndOf="@+id/regPhone"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.864"/>
     <TextView
             android:text="전화번호"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regPhone" android:fontFamily="sans-serif-black"
             android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="36dp" android:layout_marginTop="53dp"
+            android:layout_marginStart="36dp" android:layout_marginTop="44dp"
             app:layout_constraintTop_toBottomOf="@+id/regPassFindAnswer"/>
     <EditText
             android:layout_width="wrap_content"
@@ -60,15 +68,16 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/regClassText"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp" android:layout_marginTop="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/regPhoneText"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/regPhoneText" app:layout_constraintStart_toEndOf="@+id/regClass"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.942"/>
     <TextView
             android:text="소속"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regClass" android:fontFamily="sans-serif-black"
             android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="36dp" android:layout_marginTop="56dp"
+            android:layout_marginStart="36dp" android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/regPhone"/>
     <TextView
             android:text="비밀번호 찾기 질문"
@@ -76,70 +85,102 @@
             android:layout_height="wrap_content"
             android:id="@+id/regPassFindQuestion"
             android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="41dp"
-            android:layout_marginTop="67dp" app:layout_constraintTop_toBottomOf="@+id/regPassCheck"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/regPassCheck"/>
     <TextView
             android:text="비밀번호 찾기 답변"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regPassFindAnswer"
             android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="36dp"
-            android:layout_marginTop="62dp" app:layout_constraintTop_toBottomOf="@+id/regPassFindQuestion"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/answerList"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText8" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="40dp" android:layout_marginTop="122dp"
-            app:layout_constraintTop_toBottomOf="@+id/regPassCheckText"/>
+            android:id="@+id/reganswerText" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintStart_toEndOf="@+id/regPassFindAnswer" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.764" android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/answerList"/>
     <Button
             android:text="회원가입"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regNeedButton" android:textColor="#FFFFFF"
             android:textStyle="bold" android:fontFamily="sans-serif-black" android:background="#0000FF"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="160dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="163dp"/>
-    <Button
-            android:text="아이디 중복 확인"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/regIdButton" android:textStyle="bold"
-            android:fontFamily="sans-serif-black" android:textColor="#FFFFFF" android:background="#0000FF"
-            app:layout_constraintTop_toBottomOf="@+id/regNameText" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="40dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="163dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/regAuthorGroup"
+    />
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/regPassText"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/regIDText"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/regIDText" app:layout_constraintStart_toEndOf="@+id/regPass"
+            android:layout_marginStart="52dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/regPassCheckText" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="40dp" app:layout_constraintTop_toBottomOf="@+id/regPassText"/>
+            android:id="@+id/regPassCheckText"
+            app:layout_constraintStart_toEndOf="@+id/regPassCheck"
+            android:layout_marginStart="36dp" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/regPassText"/>
     <TextView
             android:text="비밀번호"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="23dp"
             android:id="@+id/regPass" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="45dp" android:layout_marginTop="50dp"
+            android:textStyle="bold" android:textColor="#0000FF"
+            android:layout_marginStart="48dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@+id/regID"/>
     <TextView
             android:text="비밀번호 확인"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="21dp"
             android:id="@+id/regPassCheck" android:textStyle="bold"
             android:fontFamily="sans-serif-black" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="45dp"
-            android:layout_marginTop="26dp" app:layout_constraintTop_toBottomOf="@+id/regPass"/>
+            android:layout_marginStart="44dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/regPass"/>
+    <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/answerList" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="52dp" app:layout_constraintTop_toBottomOf="@+id/regPassCheckText"
+            android:layout_marginStart="16dp"/>
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@+id/regClassText"
+            app:layout_constraintStart_toEndOf="@+id/regAuthor" android:layout_marginStart="80dp"
+            android:id="@+id/regAuthorGroup">
+        <RadioButton
+                android:text="투표 등록자"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/regAuthor1" android:layout_weight="1"
+                android:textColor="#0000FF" android:textStyle="bold" android:fontFamily="sans-serif-black"/>
+        <RadioButton
+                android:text="유권자"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/regAuthor2" android:layout_weight="1"
+                android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"/>
+    </RadioGroup>
+    <TextView
+            android:text="등급"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/regAuthor" android:textStyle="bold"
+            android:fontFamily="sans-serif-black" android:textColor="#0000FF" android:layout_marginStart="44dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@+id/regClass"/>
 </android.support.constraint.ConstraintLayout>

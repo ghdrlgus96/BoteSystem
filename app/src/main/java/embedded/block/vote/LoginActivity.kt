@@ -52,8 +52,7 @@ class LoginActivity : AppCompatActivity() {
         val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
             Response.Listener { response ->
                 run {
-
-                    Log.d("embedded", response.toString())
+                    userClass.clear()
                     if(response.getString("userauthor") != "undefind") {
                         var tmp = response.getString("userclassnum")
                         var tempList = tmp.split(",")

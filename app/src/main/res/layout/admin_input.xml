@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/editText_admin_input_name"
             app:layout_constraintTop_toTopOf="@+id/textView_admin_input_name"
             app:layout_constraintStart_toEndOf="@+id/textView_admin_input_name" android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:layout_marginTop="4dp"/>
@@ -24,13 +24,39 @@
             android:text="참여자 선택하기"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_admin_input" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/editText3"/>
+            android:id="@+id/button_admin_input_callSelect" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/editText_admin_input_name"/>
     <ListView
-            android:layout_width="395dp"
-            android:layout_height="509dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/button_admin_input" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:id="@+id/listView_admin_input_selected"/>
+            android:layout_width="186dp"
+            android:layout_height="385dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:id="@+id/listView_admin_input_selected"
+            android:layout_marginBottom="34dp" app:layout_constraintBottom_toTopOf="@+id/button_admin_inputGo"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/button_admin_input_callSelect"/>
+    <Button
+            android:text="투표 등록"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_admin_inputGo" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listView_admin_input_selected"
+            android:layout_marginBottom="17dp"/>
+    <ListView
+            android:layout_width="186dp"
+            android:layout_height="385dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginBottom="44dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_admin_inputGo" android:id="@+id/listViw_admin_input_can"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/button_admin_input_can"
+            app:layout_constraintVertical_bias="1.0"/>
+    <Button
+            android:text="후보자 입력하기"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText_admin_input_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="44dp" android:id="@+id/button_admin_input_can"/>
 </android.support.constraint.ConstraintLayout>

@@ -45,7 +45,8 @@ class AdminInputActivity : AppCompatActivity() {
                     listview_admin_input_select.adapter = adapter
                     check()
                     adapter.notifyDataSetChanged()
-                    //검색 구현
+
+
                     editText_admin_input_search.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -89,26 +90,28 @@ class AdminInputActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-                        }
+                        } //검색 기능 구현
                     })
 
                     button_admin_input_select.setOnClickListener { v: View? ->
                         var arr = ArrayList<Int>()
+                        var arr_userNum = ArrayList<Int>()
                         for (i in 0..(adapter.count - 1)) {
                             val view = listview_admin_input_select.getChildAt(i)
                             if (view.checkBox.isChecked == true) {
                                 arr.add(i)
                             }
                         }
-                        setResult(0, intent.putExtra("key", arr))
+                        setResult(0, intent.putExtra("userNum", arr))
                         finish()
-                    }
+                    }  //선택 완료 버튼 눌렀을때
                     button_admin_input_finish.setOnClickListener { v: View? ->
 
                         setResult(666, intent.putExtra("finish", "종료"))
                         finish()
 
-                    }
+                    }  //취소 버튼 눌렀을때
+
                     button_admin_input_allselect.setOnClickListener { v: View? ->
                         var temp = true
                         for (i in 0..(adapter.count - 1)) {
@@ -131,9 +134,9 @@ class AdminInputActivity : AppCompatActivity() {
                                 }
                             }
                         }
-                    }
+                    } //전체 선택 버튼 눌렀을때
                 }
-            },
+            },  //소속에 속한 유권자들 불러오는 서버 통신
             null
         ) {
             @Throws(AuthFailureError::class)

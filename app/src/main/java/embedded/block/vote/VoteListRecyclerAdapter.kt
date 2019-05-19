@@ -9,6 +9,7 @@ import embedded.block.vote.R
 import embedded.block.vote.VoteData
 import embedded.block.vote.VoteItem
 import kotlinx.android.synthetic.main.list_item_shop.view.*
+import org.json.JSONArray
 
 
 class VoteListRecyclerAdapter: RecyclerView.Adapter<VoteListRecyclerAdapter.ItemViewHolder>(){
@@ -16,7 +17,10 @@ class VoteListRecyclerAdapter: RecyclerView.Adapter<VoteListRecyclerAdapter.Item
     /* [0] 어댑터에서 관리하는 아이템의 개수를 반환(최초에 한번 호출)
        - ShopData.values().size : ShopData에 선언된 모든 상수를 가져와 size를 반환
     */
-    override fun getItemCount() = VoteData.values().size
+    override fun getItemCount() : Int {
+        Log.d("etest", JSONArray().length().toString())
+        return VoteData.values().size
+    }
 
     /* [1] 현재 아이템뷰의 position에 해당하는 뷰타입 반환 */
     override fun getItemViewType(position: Int):Int{

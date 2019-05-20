@@ -25,6 +25,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.admin_input.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.content_admin.*
+import kotlinx.android.synthetic.main.user_setting.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -36,6 +37,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     var arr_voter = ArrayList<Int>()    //투표 참여자 선언
     lateinit var input_view: View   //투표 참여 화면 늦은 초기화
     lateinit var stop_view: View
+    lateinit var user_setting_view: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         //늦은 초기화 한 애들 인플레이션
         input_view = View.inflate(this, R.layout.admin_input, null)
         stop_view = View.inflate(this, R.layout.admin_stop, null)
+        user_setting_view = View.inflate(this, R.layout.user_setting, null)
 
         navView.setNavigationItemSelectedListener(this)
     }
@@ -215,7 +218,24 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_tools -> {
 
             }
-            R.id.nav_share -> {
+            R.id.user_settings -> {
+                Log.d("etest", "왜안나오냐")
+                admin_content.removeAllViews()
+                admin_content.addView(user_setting_view)
+
+                button_user_setting_change.setOnClickListener { v: View? ->
+                    var intent_change = Intent(this, UpdateActivity::class.java)
+                    startActivityForResult(intent_change, 666)
+                }
+                button_user_setting_elimination.setOnClickListener { v: View? ->
+                    var intent_elimination = Intent(this, EliminationActivity::class.java)
+                    startActivityForResult(intent_elimination, 666)
+                }
+                button_user_setting_logout.setOnClickListener { v: View? ->
+                    super.recreate()
+                    finish()
+
+                }
 
             }
             R.id.nav_send -> {
@@ -251,7 +271,10 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     }
                 }
             }
-
+            666 -> {
+                finish()
+                super.recreate()
+            }
         }
     }
 }

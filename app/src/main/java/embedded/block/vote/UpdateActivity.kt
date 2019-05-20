@@ -84,7 +84,7 @@ class UpdateActivity : AppCompatActivity() {
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             else if(changePassCheckText.text.toString().length > 19)
                 Toast.makeText(this, "비밀번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
-            else if(changePhoneText.text.toString().length > 11)
+            else if(changePhoneText.text.toString().length > 13)
                 Toast.makeText(this, "전화번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
             else if(myclass.size == 0)
                 Toast.makeText(this, "소속이 없을 수 잆습니다", Toast.LENGTH_SHORT).show()

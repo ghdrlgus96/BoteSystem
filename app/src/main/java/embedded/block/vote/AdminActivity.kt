@@ -19,12 +19,16 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.admin_input.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.content_admin.*
+import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 //제허짱
 //성빈이 왔다감
@@ -170,8 +174,43 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_slideshow -> {
                 admin_content.removeAllViews()
                 admin_content.addView(stop_view)
-                var adapter = AdminStopAdapter(this)
-                listView_admin_stoplist.adapter = adapter
+
+                var queue: RequestQueue = Volley.newRequestQueue(this);
+                val request = object : StringRequest(
+                    Request.Method.GET,
+                    "http://203.249.127.32:65001/bote/vote/voteupdater/getlist/?userNum=" + LoginActivity.userNum,
+                    Response.Listener { response ->
+                        run {
+                            var arr_getlist = JSONArray(response.toString())
+                            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                            var nowTime = format.format(System.currentTimeMillis())
+                            var i = 0
+                            while(i <= (arr_getlist.length()-1)) {
+                                if (arr_getlist.getJSONObject(i).getString("quitTime") == null ||
+                                    arr_getlist.getJSONObject(i).getString("quitTime") > nowTime) {
+                                    Log.d("etest", arr_getlist.getJSONObject(i).toString())
+                                    arr_getlist.remove(i)
+                                    i = 0
+                                }
+                                else
+                                    i++
+                            }
+                            AdminStopAdapter.arr_getlistforStop = arr_getlist
+                            Log.d("etest", "rrrrr" + AdminStopAdapter.arr_getlistforStop.toString())
+                            var adapter = AdminStopAdapter(this)
+                            listView_admin_stoplist.adapter = adapter
+                        }
+                    },
+                    null
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String>? {
+                        val headers = HashMap<String, String>()
+                        headers.put("Content-Type", "application/json")
+                        return headers
+                    }
+                }
+                queue.add(request)
             }  //투표 중단 눌렀을때
             R.id.nav_tools -> {
 

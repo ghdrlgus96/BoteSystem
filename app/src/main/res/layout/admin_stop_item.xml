@@ -10,14 +10,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_admin_stopName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="40dp"
-            android:layout_marginStart="44dp"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="24dp"
+            android:layout_marginStart="40dp"/>
     <Button
             android:text="중단요청"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_admin_stopButton" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="40dp" android:layout_marginEnd="57dp"
+            android:layout_marginTop="32dp" android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"/>
 </android.support.constraint.ConstraintLayout>

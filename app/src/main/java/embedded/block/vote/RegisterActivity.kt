@@ -30,10 +30,16 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         regNeedButton.setOnClickListener {
-            if(regPassText.text.toString() == regPassCheckText.text.toString())
-                register()
-            else
+            if(regPassText.text.toString() != regPassCheckText.text.toString())
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
+            else if(regIDText.text.toString().length > 19)
+                Toast.makeText(this, "아이디가 너무 깁니다", Toast.LENGTH_SHORT).show()
+            else if(regPassText.text.toString().length > 19)
+                Toast.makeText(this, "비밀번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
+            else if(regPhoneText.text.toString().length > 11)
+                Toast.makeText(this, "전화번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
+            else
+                register()
         }
 
         regAuthorGroup.setOnCheckedChangeListener { group, checkedId ->

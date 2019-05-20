@@ -187,7 +187,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                             var i = 0
                             while(i <= (arr_getlist.length()-1)) {
                                 if (arr_getlist.getJSONObject(i).getString("quitTime") == null ||
-                                    arr_getlist.getJSONObject(i).getString("quitTime") > nowTime) {
+                                    arr_getlist.getJSONObject(i).getString("quitTime") < nowTime) {
                                     Log.d("etest", arr_getlist.getJSONObject(i).toString())
                                     arr_getlist.remove(i)
                                     i = 0

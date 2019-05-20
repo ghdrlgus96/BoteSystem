@@ -23,14 +23,12 @@
         <activity android:name=".RegisterActivity">
         </activity>
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".AdminVoteStart">
         </activity>
+        <activity android:name=".AdminVoteStartClicked"></activity>
+        <activity android:name=".StartPopupActivity" android:theme="@android:style/Theme.Dialog"></activity>
         <activity
                 android:name=".AdminActivity"
                 android:label="@string/title_activity_admin"

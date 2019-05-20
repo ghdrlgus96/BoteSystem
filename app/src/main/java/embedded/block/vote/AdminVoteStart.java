@@ -38,7 +38,6 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(getApplicationContext(),AdminVoteStartClicked.class);
 
                 intent.putExtra("voteNum",data.get(position).getVoteNum());
-                intent.putExtra("voteName",data.get(position).getVoteName());
                 startActivity(intent);
             }
         });

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="395dp"
+            android:layout_height="715dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+        <TextView
+                android:text="후보자 선택"
+                android:layout_width="match_parent"
+                android:layout_height="53dp" android:id="@+id/textView6" android:textSize="30sp"
+                android:gravity="center"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="111dp" android:id="@+id/textView7"/>
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="378dp"/>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+            <Button
+                    android:text="Cancel"
+                    android:layout_width="194dp"
+                    android:layout_height="wrap_content" android:id="@+id/btn_Cancel"/>
+            <Button
+                    android:text="Ok"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content" android:id="@+id/btn_Ok"/>
+        </TableRow>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

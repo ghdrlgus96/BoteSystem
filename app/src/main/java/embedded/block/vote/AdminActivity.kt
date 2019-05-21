@@ -215,7 +215,11 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
                 queue.add(request)
             }  //투표 중단 눌렀을때
-            R.id.nav_tools -> {
+            R.id.nav_result -> {
+                admin_content.removeAllViews()
+                admin_content.addView(View.inflate(this,R.layout.admin_start,null))
+                val intent = Intent(this,AdminVoteResult::class.java)
+                startActivityForResult(intent,0);
 
             }
             R.id.user_settings -> {

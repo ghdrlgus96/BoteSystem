@@ -3,29 +3,43 @@ package embedded.block.vote
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Toast
 import embedded.block.vote.R
-import embedded.block.vote.VoteListRecyclerAdapter
+import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_first.view.*
+import kotlinx.android.synthetic.main.list_item_shop.*
 
 class FirstFragment: Fragment()
 {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    //리사이클뷰 어댑터, 레이아웃매니저 등록
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootview = inflater.inflate(R.layout.fragment_first, container, false)
-        rootview.recyclerView.layoutManager = LinearLayoutManager(activity)
-        rootview.recyclerView.adapter = VoteListRecyclerAdapter()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
-        return rootview
+        val view = inflater.inflate(R.layout.fragment_first, container, false)
+
+        return view
     }
+
+    var adapter:VoteListAdapter? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+
+        adapter = VoteListAdapter(context!!)
+        flag_listView1.adapter = adapter
+
+
+    }
+
 }
 
 

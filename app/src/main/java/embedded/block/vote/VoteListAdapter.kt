@@ -8,8 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import embedded.block.vote.R
+import kotlinx.android.synthetic.main.list_item_shop.view.*
+import org.json.JSONArray
 
-class VoteResultRecyclerAdapter(val context: Context): BaseAdapter() {
+
+class VoteListAdapter(val context: Context): BaseAdapter() {
     /* 리스트뷰에서 보여줄 아이템(항목) 화면의 인플레이션을 위해 LayoutInflater 참조 */
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -28,9 +32,11 @@ class VoteResultRecyclerAdapter(val context: Context): BaseAdapter() {
             Log.i("CONVERT-VIEW", "convertView is null, position: ${position.toString()}")
         }
 
-        val view = convertView ?: mInflater.inflate(R.layout.votelist_result, parent, false)
+        val view = convertView ?: mInflater.inflate(R.layout.list_item_shop, parent, false)
 
-        view.findViewById<TextView>(R.id.result_VoteName).text = getItem(position).voteName
+        view.findViewById<TextView>(R.id.list_VoteName).text = getItem(position).voteName
+        view.findViewById<TextView>(R.id.list_Date).text = getItem(position).voteDate
+
 
         return view
     }

@@ -2,8 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
+    <ListView
             android:layout_width="395dp"
-            android:layout_height="715dp" tools:layout_editor_absoluteY="0dp" tools:layout_editor_absoluteX="0dp"
-            android:id="@+id/recyclerView"/>
+            android:layout_height="715dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp"
+            android:id="@+id/flag_listView1"/>
 </android.support.constraint.ConstraintLayout>

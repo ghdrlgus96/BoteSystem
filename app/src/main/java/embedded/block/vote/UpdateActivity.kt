@@ -87,7 +87,7 @@ class UpdateActivity : AppCompatActivity() {
             else if(changePhoneText.text.toString().length > 13)
                 Toast.makeText(this, "전화번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
             else if(myclass.size == 0)
-                Toast.makeText(this, "소속이 없을 수 잆습니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "소속이 없을 수 없습니다", Toast.LENGTH_SHORT).show()
             else
                 changeUser()
         }

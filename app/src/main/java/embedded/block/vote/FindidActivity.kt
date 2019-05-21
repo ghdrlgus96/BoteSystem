@@ -35,7 +35,7 @@ class FindidActivity : AppCompatActivity() {
             Request.Method.POST, "http://203.249.127.32:65001/bote/find/id", json,
             Response.Listener { response ->
                 run {
-                    if(response.getString("userid") == "undefind")
+                    if(response.getString("userid") == "undefined")
                         Toast.makeText(this, "정확한 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
                     else
                         Toast.makeText(this, response.getString("userid"), Toast.LENGTH_SHORT).show()

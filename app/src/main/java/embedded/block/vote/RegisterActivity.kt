@@ -29,14 +29,19 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        regAuthor1.isChecked = true
+        myAuthor = "1"
+
         regNeedButton.setOnClickListener {
-            if(regPassText.text.toString() != regPassCheckText.text.toString())
+            if(regNameText.text.toString() == "" || regIDText.text.toString() == "" || regPassText.text.toString() == "" || reganswerText.text.toString() == "" || regPhoneText.text.toString() == "" || regClassText.text.toString() == "")
+                Toast.makeText(this, "정보를 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+            else if(regPassText.text.toString() != regPassCheckText.text.toString())
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             else if(regIDText.text.toString().length > 19)
                 Toast.makeText(this, "아이디가 너무 깁니다", Toast.LENGTH_SHORT).show()
             else if(regPassText.text.toString().length > 19)
                 Toast.makeText(this, "비밀번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
-            else if(regPhoneText.text.toString().length > 11)
+            else if(regPhoneText.text.toString().length > 13)
                 Toast.makeText(this, "전화번호가 너무 깁니다", Toast.LENGTH_SHORT).show()
             else
                 register()

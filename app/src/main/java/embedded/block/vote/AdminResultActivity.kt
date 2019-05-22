@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -30,7 +31,7 @@ class AdminResultActivity : AppCompatActivity() {
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : StringRequest(
             Request.Method.GET,
-            "http://203.249.127.32:65009/bote/vote/voteresulter/admin/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"),
+            "http://203.249.127.32:65001/bote/vote/voteresulter/admin/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"),
             Response.Listener { response ->
                 run {
                     var arr_getResult = JSONArray(response.toString())
@@ -42,10 +43,10 @@ class AdminResultActivity : AppCompatActivity() {
                         var queue: RequestQueue = Volley.newRequestQueue(this);
                         val request = object : StringRequest(
                             Request.Method.GET,
-                            "http://203.249.127.32:65009/bote/vote/voteupdater/openresult/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"),
+                            "http://203.249.127.32:65001/bote/vote/voteupdater/openresult/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"),
                             Response.Listener { response ->
                                 run {
-
+                                    Toast.makeText(this, "투표 결과 열람 승인 완료", Toast.LENGTH_SHORT).show()
                                 }
                             },
                             null

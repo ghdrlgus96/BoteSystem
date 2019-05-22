@@ -175,7 +175,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 admin_content.removeAllViewsInLayout()
                 admin_content.addView(View.inflate(this, R.layout.admin_start, null))
                 val intent = Intent(this, AdminVoteStart::class.java)
-                startActivityForResult(intent, 0)
+                startActivity(intent)
 
             }
             R.id.nav_slideshow -> {
@@ -193,7 +193,8 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                             var nowTime = format.format(System.currentTimeMillis())
                             var i = 0
                             while(i <= (arr_getlist.length()-1)) {
-                                if (arr_getlist.getJSONObject(i).getString("quitTime") == null ||
+                                Log.d("etest", "dsfs"+arr_getlist.getJSONObject(i).getString("quitTime"))
+                                if (arr_getlist.getJSONObject(i).getString("quitTime") == "null" ||
                                     arr_getlist.getJSONObject(i).getString("quitTime") < nowTime) {
                                     Log.d("etest", arr_getlist.getJSONObject(i).toString())
                                     arr_getlist.remove(i)
@@ -226,15 +227,16 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 var arr_getName = ArrayList<String>()
                 val request = object : StringRequest(
                     Request.Method.GET,
-                    "http://203.249.127.32:65009/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
+                    "http://203.249.127.32:65001/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
                     Response.Listener { response ->
                         run {
                             var arr_getlist = JSONArray(response.toString())
                             val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                             var nowTime = format.format(System.currentTimeMillis())
                             var i = 0
+
                             while(i <= (arr_getlist.length()-1)) {
-                                if (arr_getlist.getJSONObject(i).getString("quitTime") == null ||
+                                if (arr_getlist.getJSONObject(i).getString("quitTime") == "null" ||
                                     arr_getlist.getJSONObject(i).getString("quitTime") > nowTime) {
                                     arr_getlist.remove(i)
                                     i = 0
@@ -242,6 +244,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                                 else
                                     i++
                             }
+
                             AdminResultAdapter.arr_getList = arr_getlist
                             for(i in 0..(AdminResultAdapter.arr_getList.length()-1))
                                 arr_getName.add(AdminResultAdapter.arr_getList.getJSONObject(i).getString("voteName"))

@@ -3,8 +3,8 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
     <TableRow
-            android:layout_width="399dp"
-            android:layout_height="61dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+            android:layout_width="419dp"
+            android:layout_height="59dp" tools:layout_editor_absoluteY="1dp" tools:layout_editor_absoluteX="0dp">
         <RadioButton
                 android:layout_width="61dp"
                 android:layout_height="match_parent" android:id="@+id/radioButton5"/>

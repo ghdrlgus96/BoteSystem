@@ -25,15 +25,6 @@
         </TableRow>
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <Button
-                    android:text="Cancel"
-                    android:layout_width="188dp"
-                    android:layout_height="57dp" android:id="@+id/CA_Cancel"/>
-            <Button
-                    android:text="Ok"
-                    android:layout_width="201dp"
-                    android:layout_height="match_parent" android:id="@+id/CA_Ok"/>
-        </TableRow>
+                android:layout_height="match_parent"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

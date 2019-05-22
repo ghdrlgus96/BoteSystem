@@ -22,11 +22,6 @@ class VoteResultRecyclerAdapter(val context: Context): BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
 
-        if (convertView != null) {
-            Log.i("CONVERT-VIEW", "convertView is not null, position: ${position.toString()}")
-        } else {
-            Log.i("CONVERT-VIEW", "convertView is null, position: ${position.toString()}")
-        }
 
         val view = convertView ?: mInflater.inflate(R.layout.votelist_result, parent, false)
 

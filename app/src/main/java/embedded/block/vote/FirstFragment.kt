@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -37,9 +38,22 @@ class FirstFragment: Fragment()
         adapter = VoteListAdapter(context!!)
         flag_listView1.adapter = adapter
 
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        flag_listView1.setOnItemClickListener { parent, view, position, id ->
+
+            var intent = Intent(activity, VotepageActivity::class.java)
+
+
+            startActivity(intent)
+        }
     }
 
 }
+
+
 
 

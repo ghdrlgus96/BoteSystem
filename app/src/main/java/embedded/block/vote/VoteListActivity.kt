@@ -4,14 +4,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
+import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import embedded.block.vote.VoteListPagerAdapter
 import embedded.block.vote.R
+import kotlinx.android.synthetic.main.admin_start_item.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
@@ -27,32 +30,22 @@ class VoteListActivity : AppCompatActivity() {
         val pagerAdapter = VoteListPagerAdapter(supportFragmentManager)
         val pager = findViewById<ViewPager>(R.id.Viewpage)
         pager.adapter = pagerAdapter
+        pagerAdapter.notifyDataSetChanged()
 
         val tab = findViewById<TabLayout>(R.id.tablayout_main)
         tab.setupWithViewPager(pager)
-/*
+
             var json = JSONObject()
             json.put("userNum", "null")
             var queue: RequestQueue = Volley.newRequestQueue(this)
-            val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/votestarter/getlist/?userNum=" + LoginActivity.userNum,json,
+            val request = object : StringRequest(Request.Method.GET, "http://203.249.127.32:65009/bote/vote/votestarter/getlist/?userNum=" + LoginActivity.userNum,
                 Response.Listener { response ->
                     run {
-
-                        var temp1 = response.getString("votename")
-                        var tempList1 = temp1.split(",")
-
-                        for (i in 0..tempList1.size - 1) {
-                            voteName.add(tempList1.get(i))
-                        }
-
-                        /*
-                        var quitTime = response.get("quittime") as ArrayList<Date>
-
-                        var temp2 =  SimpleDateFormat("yyyyMMdd")
-                        var quitTime2 = temp2.format(quitTime)
-                        */
-
-
+                        Log.d("ktext", response.toString())
+                        val arr_getList = JSONArray(response.toString())
+                        var string = arr_getList.toString()
+                        VoteListAdapter.arr_getList = JSONArray(string)
+                        //VoteResultRecyclerAdapter.arr_getResultList = JSONArray(string)
 
                     }
                 }, null
@@ -67,17 +60,6 @@ class VoteListActivity : AppCompatActivity() {
                         queue.add(request)
     }
 
-
-    companion object {
-        var voteName = ArrayList<String>()
-        var quitTime = ArrayList<Date>()
-    }*/
     }
-}
 
 
-/*
-
-val tab = findViewById<TabLayout>(R.id.tablayout_main)
-tab.setupWithViewPager(pager)
-*/

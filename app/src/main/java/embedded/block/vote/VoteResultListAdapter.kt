@@ -9,6 +9,7 @@ import android.widget.TextView
 
 class VoteResultListAdapter(val context: Context): BaseAdapter() {
 
+
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getCount() = VoteResultData.values().size

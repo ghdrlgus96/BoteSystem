@@ -14,20 +14,25 @@
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
-                android:layout_height="111dp" android:id="@+id/textView7"/>
-        <ListView
+                android:layout_height="111dp" android:id="@+id/page_vote_Name"/>
+
+        <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="378dp"/>
+                android:layout_height="466dp" android:id="@+id/radiogroup">
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/alert_listview"/>
+        </RadioGroup>
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="66dp">
+                android:layout_height="match_parent">
             <Button
-                    android:text="Cancel"
-                    android:layout_width="194dp"
+                    android:text="@android:string/cancel"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content" android:id="@+id/btn_Cancel"/>
             <Button
-                    android:text="Ok"
-                    android:layout_width="193dp"
+                    android:text="@android:string/ok"
+                    android:layout_width="203dp"
                     android:layout_height="wrap_content" android:id="@+id/btn_Ok"/>
         </TableRow>
     </LinearLayout>

@@ -34,7 +34,7 @@ class VoteResultActivity : AppCompatActivity() {
                         val arr_ResultList = JSONArray(response.toString())
                         var string = arr_ResultList.toString()
                         VoteResultListAdapter.arr_ResultList = JSONArray(string)
-
+                        Log.d("etest", "제헌확인" + string)
                         var adapter = VoteResultListAdapter(this)
                         voteresult_listview.adapter = adapter
                     }

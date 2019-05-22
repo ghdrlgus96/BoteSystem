@@ -35,6 +35,7 @@ class ThirdFragment: Fragment()
             startActivity(intent_elimination)
         }
         t.findViewById<Button>(R.id.button_user_setting_logout).setOnClickListener { v: View? ->
+
             activity?.finish()
         }
 

@@ -23,6 +23,12 @@ import java.text.SimpleDateFormat;
 //(제헌)투표목록 화면 Mainactivity
 class VoteListActivity : AppCompatActivity() {
 
+    override fun onBackPressed() {
+        voteNumber.clear()
+        resultVoteNumber.clear()
+        super.onBackPressed()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.votelist_main)

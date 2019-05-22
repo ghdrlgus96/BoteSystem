@@ -23,6 +23,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.admin_input.*
+import kotlinx.android.synthetic.main.admin_start.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.content_admin.*
 import kotlinx.android.synthetic.main.user_setting.*
@@ -30,6 +31,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 //제허짱
 //성빈이 왔다감
@@ -38,6 +40,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     lateinit var input_view: View   //투표 참여 화면 늦은 초기화
     lateinit var stop_view: View
     lateinit var user_setting_view: View
+    lateinit var result_view: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         input_view = View.inflate(this, R.layout.admin_input, null)
         stop_view = View.inflate(this, R.layout.admin_stop, null)
         user_setting_view = View.inflate(this, R.layout.user_setting, null)
+        result_view = View.inflate(this, R.layout.admin_start, null)
 
         navView.setNavigationItemSelectedListener(this)
     }
@@ -217,9 +221,50 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             }  //투표 중단 눌렀을때
             R.id.nav_result -> {
                 admin_content.removeAllViews()
-                admin_content.addView(View.inflate(this,R.layout.admin_start,null))
-                val intent = Intent(this,AdminVoteResult::class.java)
-                startActivityForResult(intent,0);
+                admin_content.addView(result_view)
+                var queue: RequestQueue = Volley.newRequestQueue(this);
+                var arr_getName = ArrayList<String>()
+                val request = object : StringRequest(
+                    Request.Method.GET,
+                    "http://203.249.127.32:65009/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
+                    Response.Listener { response ->
+                        run {
+                            var arr_getlist = JSONArray(response.toString())
+                            AdminResultAdapter.arr_getList = JSONArray(arr_getlist.toString())
+                            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                            var nowTime = format.format(System.currentTimeMillis())
+
+                            for(i in 0..(arr_getlist.length()-1)) {
+                                if(arr_getlist.getJSONObject(i).getString("quitTime") > nowTime)
+                                    AdminResultAdapter.arr_getList.remove(i)
+
+                            }
+                            for(i in 0..(AdminResultAdapter.arr_getList.length()-1))
+                                arr_getName.add(AdminResultAdapter.arr_getList.getJSONObject(i).getString("voteName"))
+
+                            var madapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, arr_getName)
+                            admin_start.setOnItemClickListener { parent, view, position, id ->
+                                var intent = Intent(this, AdminResultActivity::class.java)
+                                Log.d("etest", "포지션" + position)
+                                intent.putExtra("position", position)
+                                Log.d("etest", "열림")
+                                startActivity(intent)
+
+                            }
+                            admin_start.adapter = madapter
+
+                        }
+                    },
+                    null
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String>? {
+                        val headers = HashMap<String, String>()
+                        headers.put("Content-Type", "application/json")
+                        return headers
+                    }
+                }
+                queue.add(request)
 
             }
             R.id.user_settings -> {

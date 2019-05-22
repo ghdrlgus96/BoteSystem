@@ -35,7 +35,6 @@
         </activity>
         <activity android:name=".StartPopupActivity" android:theme="@android:style/Theme.Dialog">
         </activity>
-        <activity android:name=".AdminVoteResult"></activity>
         <activity android:name=".AdminVoteResultView"></activity>
         <activity
                 android:name=".AdminActivity"
@@ -50,6 +49,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".AdminInputActivity"/>
+        <activity android:name=".AdminResultActivity"></activity>
     </application>
 
 </manifest>

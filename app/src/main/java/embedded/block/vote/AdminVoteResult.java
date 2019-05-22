@@ -21,6 +21,7 @@ public class AdminVoteResult extends AppCompatActivity implements View.OnClickLi
         ListView listView = (ListView) findViewById(R.id.admin_start);
         //여기다 투표목록받아와야함
         // 샘플 데이터
+
         data = new ArrayList<>();
 
         AdminVoteItem vote1 = new AdminVoteItem(1,"안녕","");

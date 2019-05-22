@@ -230,15 +230,19 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     Response.Listener { response ->
                         run {
                             var arr_getlist = JSONArray(response.toString())
-                            AdminResultAdapter.arr_getList = JSONArray(arr_getlist.toString())
                             val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                             var nowTime = format.format(System.currentTimeMillis())
-
-                            for(i in 0..(arr_getlist.length()-1)) {
-                                if(arr_getlist.getJSONObject(i).getString("quitTime") > nowTime)
-                                    AdminResultAdapter.arr_getList.remove(i)
-
+                            var i = 0
+                            while(i <= (arr_getlist.length()-1)) {
+                                if (arr_getlist.getJSONObject(i).getString("quitTime") == null ||
+                                    arr_getlist.getJSONObject(i).getString("quitTime") > nowTime) {
+                                    arr_getlist.remove(i)
+                                    i = 0
+                                }
+                                else
+                                    i++
                             }
+                            AdminResultAdapter.arr_getList = arr_getlist
                             for(i in 0..(AdminResultAdapter.arr_getList.length()-1))
                                 arr_getName.add(AdminResultAdapter.arr_getList.getJSONObject(i).getString("voteName"))
 

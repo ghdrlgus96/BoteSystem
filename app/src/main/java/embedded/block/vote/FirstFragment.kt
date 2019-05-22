@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import embedded.block.vote.R
+import kotlinx.android.synthetic.main.admin_start_item.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_first.view.*
 import kotlinx.android.synthetic.main.list_item_shop.*
@@ -46,12 +47,11 @@ class FirstFragment: Fragment()
         flag_listView1.setOnItemClickListener { parent, view, position, id ->
 
             var intent = Intent(activity, VotepageActivity::class.java)
-
-
+            intent.putExtra("votenum",VoteListActivity.voteNumber[position])
+            //Log.d("ktext",VoteListActivity.voteNumber[position])
             startActivity(intent)
         }
     }
-
 }
 
 

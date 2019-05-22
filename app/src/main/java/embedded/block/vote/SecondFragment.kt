@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -35,6 +36,18 @@ class SecondFragment: Fragment()
 
         adapter = VoteResultRecyclerAdapter(context!!)
         flag_listView2.adapter = adapter
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        flag_listView2.setOnItemClickListener { parent, view, position, id ->
+
+            var intent = Intent(activity, VoteResultActivity::class.java)
+            intent.putExtra("votenum",VoteListActivity.resultVoteNumber[position])
+            //Log.d("ktext",VoteListActivity.voteNumber[position])
+            startActivity(intent)
+        }
     }
 
 }

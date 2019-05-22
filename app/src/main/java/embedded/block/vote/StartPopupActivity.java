@@ -27,8 +27,12 @@ public class StartPopupActivity extends Activity implements View.OnClickListener
         finishBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                startActivity(intent);
+                AdminVoteStartClicked temp = (AdminVoteStartClicked) AdminVoteStartClicked.AActivity;
+                AdminVoteStart temp2 = (AdminVoteStart)AdminVoteStart.th;
+                finish();
+                temp.finish();
+                temp2.recreate();
+
             }
         });
 

@@ -3,45 +3,46 @@ package embedded.block.vote;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.net.URL;
-import java.security.KeyStore;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdminVoteStartClicked extends AppCompatActivity implements View.OnClickListener {
+
+
     @Override
     public void onClick(View v) {
 
     }
-
+    private String quitTime;
     private int voteNum;
     private int selectTime = 1;
+    public static Activity AActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        voteNum = intent.getIntExtra("voteNum",9999);
+
         setContentView(R.layout.admin_start_clicked);
         Spinner spinner = (Spinner) findViewById(R.id.spinnerStart);
         Button startBtn = (Button) findViewById(R.id.startBtn);
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
-        final String url = "http://203.249.127.32:65001/bote/voteupdater/votereaper";
+        AActivity = this;
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -70,38 +71,40 @@ public class AdminVoteStartClicked extends AppCompatActivity implements View.OnC
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date);
                 cal.add(Calendar.DATE, selectTime);
-                Date voteTime = cal.getTime();
+                final Date time = cal.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                quitTime = sdf.format(time);
+                final String url = "http://203.249.127.32:65009/bote/vote/voteupdater/votereaper/?voteNum="+voteNum+"&quitTime="+quitTime;
+                StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                       url, new Response.Listener<String>() {
+                    @Override
+                   public void onResponse(String response) {
 
-                JSONObject requestJsonObject = new JSONObject();
+                    }
+                }, new Response.ErrorListener() {
+                   @Override
+                    public void onErrorResponse(VolleyError error) {
+                       error.printStackTrace();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError{
+                        Map<String, String> params=new HashMap<>();
+                        params.put("quitTime",quitTime);
+                        params.put("voteNum",Integer.toString(voteNum));
+                        return params;
+                    }
+                };
                 try {
-                    requestJsonObject.put("voteNume", voteNum);
-                    requestJsonObject.put("voteTime", voteTime);
+                    requestQueue.add(stringRequest);
+                    Intent intent = new Intent(getApplicationContext(), StartPopupActivity.class);
+                    startActivity(intent);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+                }catch(Exception e){
+
                 }
-                Intent intent = new Intent(getApplicationContext(), StartPopupActivity.class);
-                startActivity(intent);
 
-//                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-//                        url, requestJsonObject, new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//                    }
-//                });
-//                try {
-//                    requestQueue.add(jsonObjectRequest);
-//                    Intent intent = new Intent(getApplicationContext(), StartPopupActivity.class);
-//                    startActivity(intent);
-//                }catch(Exception e){
-//
-//                }
             }
 
         });

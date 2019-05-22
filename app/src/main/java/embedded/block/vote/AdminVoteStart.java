@@ -36,6 +36,7 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
 
 
     private RequestQueue queue;
+    public static Activity th;
     private JSONObject jsonObject = new JSONObject();
     private JSONArray jsonArray = new JSONArray();
     private ArrayList<AdminVoteItem> data = new ArrayList<AdminVoteItem>();
@@ -44,6 +45,7 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_start);
         final ListView listView = (ListView) findViewById(R.id.admin_start);
+        th = this;
         //여기다 투표목록받아와야함
         // 샘플 데이터
 //        data = new ArrayList<>();
@@ -57,7 +59,7 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         //int userNum = Integer.parseInt(LoginActivity.Companion.getUserNum());
-        final String url = "http://203.249.127.32:65001/bote/vote/voteupdater/getlist/?userNum="+LoginActivity.Companion.getUserNum();
+        final String url = "http://203.249.127.32:65009/bote/vote/voteupdater/getlist/?userNum="+LoginActivity.Companion.getUserNum();
 
 
         queue = Volley.newRequestQueue(this);
@@ -76,7 +78,8 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
                         vote = new AdminVoteItem(jsonObject.getInt("voteNum"), jsonObject.getString("voteName"), jsonObject.getString("quitTime"));
-                        data.add(vote);
+                        if(jsonObject.getString("quitTime") == "null")
+                         data.add(vote);
                     }
 
                     AdminVoteListAdapter adapter = new AdminVoteListAdapter(getApplicationContext(), R.layout.admin_start_item, data);
@@ -112,5 +115,11 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

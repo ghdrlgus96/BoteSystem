@@ -74,7 +74,7 @@ public class AdminVoteStartClicked extends AppCompatActivity implements View.OnC
                 final Date time = cal.getTime();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 quitTime = sdf.format(time);
-                final String url = "http://203.249.127.32:65009/bote/vote/voteupdater/votereaper/?voteNum="+voteNum+"&quitTime="+quitTime;
+                final String url = "http://203.249.127.32:65001/bote/vote/voteupdater/votereaper/?voteNum="+voteNum+"&quitTime="+quitTime;
                 StringRequest stringRequest = new StringRequest(Request.Method.GET,
                        url, new Response.Listener<String>() {
                     @Override

@@ -172,7 +172,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
             } //투표 등록 눌렀을때
             R.id.nav_start -> {
-                admin_content.removeAllViewsInLayout()
                 admin_content.addView(View.inflate(this, R.layout.admin_start, null))
                 val intent = Intent(this, AdminVoteStart::class.java)
                 startActivity(intent)

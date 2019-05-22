@@ -47,6 +47,7 @@ class AdminResultActivity : AppCompatActivity() {
                             Response.Listener { response ->
                                 run {
                                     Toast.makeText(this, "투표 결과 열람 승인 완료", Toast.LENGTH_SHORT).show()
+                                    finish()
                                 }
                             },
                             null

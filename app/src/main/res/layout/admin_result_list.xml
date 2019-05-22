@@ -13,7 +13,7 @@
             android:layout_marginTop="8dp"
             android:id="@+id/listView_admin_result_list"/>
     <Button
-            android:text="Button"
+            android:text="결과열람승인"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_admin_result_author"

@@ -27,7 +27,7 @@ class VoteResultActivity : AppCompatActivity() {
             var queue: RequestQueue = Volley.newRequestQueue(this)
             val request = object : StringRequest(
                 Request.Method.GET,
-                "http://203.249.127.32:65009/bote/vote/voteresulter/voter/?voteNum=" + resultVoteNum,
+                "http://203.249.127.32:65001/bote/vote/voteresulter/voter/?voteNum=" + resultVoteNum,
                 Response.Listener { response ->
                     run {
                         Log.d("ktext", response.toString())

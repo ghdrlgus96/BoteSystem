@@ -1,6 +1,7 @@
 package embedded.block.vote
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,20 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.alert_list_item.view.*
 import org.json.JSONArray
+import org.json.JSONObject
+import java.util.HashMap
 
 class AlertListViewAdapter(val context: Context): BaseAdapter() {
-    companion object{
+    companion object {
         var arr_getPage = JSONArray()
     }
     /* 리스트뷰에서 보여줄 아이템(항목) 화면의 인플레이션을 위해 LayoutInflater 참조 */
@@ -42,6 +52,27 @@ class AlertListViewAdapter(val context: Context): BaseAdapter() {
             else
                 it.radioButton5.isChecked = true
             Toast.makeText(context, it.item_can_name.text.toString(), Toast.LENGTH_LONG).show()
+                   var can_Name = it.item_can_name.text.toString()
+            var json = JSONObject()
+            json.put("canName", can_Name)
+
+            var queue: RequestQueue = Volley.newRequestQueue(context)
+            val request = object : JsonObjectRequest(
+                Request.Method.POST, "http://203.249.127.32:65009/bote/vote/votestarter/index", json,
+                Response.Listener { response ->
+                    run {
+
+                    }
+                }, null
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): MutableMap<String, String>? {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    return headers
+                }
+            }
+            queue.add(request)
         }
 
         return view

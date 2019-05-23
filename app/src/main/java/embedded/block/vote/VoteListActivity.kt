@@ -41,7 +41,7 @@ class VoteListActivity : AppCompatActivity() {
         var queue: RequestQueue = Volley.newRequestQueue(this)
         val request = object : StringRequest(
             Request.Method.GET,
-            "http://203.249.127.32:65009/bote/vote/votestarter/getlist/?userNum=" + LoginActivity.userNum,
+            "http://203.249.127.32:65001/bote/vote/votestarter/getlist/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
                     Log.d("ktext", response.toString())
@@ -73,7 +73,7 @@ class VoteListActivity : AppCompatActivity() {
         var queuet: RequestQueue = Volley.newRequestQueue(this)
         val requestt = object : StringRequest(
             Request.Method.GET,
-            "http://203.249.127.32:65009/bote/vote/voteresulter/votergetlist/?userNum=" + LoginActivity.userNum,
+            "http://203.249.127.32:65001/bote/vote/voteresulter/votergetlist/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
                     Log.d("ptext", response.toString() + "qweqweqweqe")

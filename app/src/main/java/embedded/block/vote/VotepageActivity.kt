@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.EditText
 import android.widget.RatingBar
+import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import embedded.block.vote.VoteListAdapter.Companion.arr_getList
@@ -21,6 +23,7 @@ import org.json.JSONObject
 import java.util.HashMap
 
 class VotepageActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +38,11 @@ class VotepageActivity : AppCompatActivity() {
         json.put("voteNum", "null")
         var queue: RequestQueue = Volley.newRequestQueue(this)
         val request = object : StringRequest(
-            Request.Method.GET, "http://203.249.127.32:65009/bote/vote/votestarter/getcandidate/?voteNum="+ votenum,
+            Request.Method.GET, "http://203.249.127.32:65001/bote/vote/votestarter/getcandidate/?voteNum=" + votenum,
             Response.Listener { response ->
                 run {
                     Log.d("ktext", response.toString())
-                    val arr_getPage= JSONArray(response.toString())
+                    val arr_getPage = JSONArray(response.toString())
                     var string = arr_getPage.toString()
                     AlertListViewAdapter.arr_getPage = JSONArray(string)
 
@@ -57,9 +60,11 @@ class VotepageActivity : AppCompatActivity() {
             }
         }
         queue.add(request)
+
         //어댑터 생성 및 리스트뷰에 어댑터 설정
 
         //arr_getPage
+        /*
         btn_Cancel.setOnClickListener {
             finish()
         }
@@ -78,5 +83,7 @@ class VotepageActivity : AppCompatActivity() {
                 }
                 .show()
         }
-        }
+
+        */
     }
+ }

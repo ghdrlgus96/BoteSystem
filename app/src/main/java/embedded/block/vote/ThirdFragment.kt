@@ -19,6 +19,14 @@ class ThirdFragment: Fragment()
         super.onCreate(savedInstanceState)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            666 -> {
+                activity?.finish()
+            }
+        }
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val t = inflater.inflate(R.layout.user_setting, container, false)
@@ -26,13 +34,13 @@ class ThirdFragment: Fragment()
         t.findViewById<Button>(R.id.button_user_setting_change).setOnClickListener { v: View? ->
             var intent_change = Intent(context, UpdateActivity::class.java)
             //startActivityForResult(intent_change, 666)
-            startActivity(intent_change)
+            startActivityForResult(intent_change, 666)
         }
 
         t.findViewById<Button>(R.id.button_user_setting_elimination).setOnClickListener { v: View? ->
             var intent_elimination = Intent(context, EliminationActivity::class.java)
             //startActivityForResult(intent_elimination, 666)
-            startActivity(intent_elimination)
+            startActivityForResult(intent_elimination, 666)
         }
         t.findViewById<Button>(R.id.button_user_setting_logout).setOnClickListener { v: View? ->
 

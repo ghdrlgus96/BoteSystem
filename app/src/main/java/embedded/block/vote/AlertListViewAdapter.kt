@@ -43,7 +43,7 @@ class AlertListViewAdapter(val context: Context): BaseAdapter() {
 
 
         val view = mInflater.inflate(R.layout.alert_list_item, parent, false)
-        //투표자 이름
+        //투표자 이름 ㅇㅇ
         view.findViewById<TextView>(R.id.item_can_name).text =
             getItem(position)
 

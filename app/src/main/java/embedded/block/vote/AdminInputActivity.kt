@@ -53,7 +53,7 @@ class AdminInputActivity : AppCompatActivity() {
                         override fun afterTextChanged(s: Editable?) {
                             if (editText_admin_input_search.text == null || editText_admin_input_search.text.length == 0) {
                                 var string2 = arr_getPart.toString()
-                                //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌
+                                //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌ㅇ
                                 AdminInputAdapter.arr_getParticipation = JSONArray(string2)
                                 check()
                                 adapter.notifyDataSetChanged()

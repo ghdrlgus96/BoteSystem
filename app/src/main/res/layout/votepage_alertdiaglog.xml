@@ -12,7 +12,6 @@
                 android:layout_height="53dp" android:id="@+id/textView6" android:textSize="30sp"
                 android:gravity="center"/>
         <TextView
-                android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="111dp" android:id="@+id/page_vote_Name"/>
 
@@ -25,15 +24,6 @@
         </RadioGroup>
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <Button
-                    android:text="@android:string/cancel"
-                    android:layout_width="190dp"
-                    android:layout_height="wrap_content" android:id="@+id/btn_Cancel"/>
-            <Button
-                    android:text="@android:string/ok"
-                    android:layout_width="203dp"
-                    android:layout_height="wrap_content" android:id="@+id/btn_Ok"/>
-        </TableRow>
+                android:layout_height="match_parent"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -47,21 +48,17 @@ class AlertListViewAdapter(val context: Context): BaseAdapter() {
             getItem(position)
 
         view.setOnClickListener {
-            if(it.radioButton5.isChecked == true)
-                it.radioButton5.isChecked = false
-            else
-                it.radioButton5.isChecked = true
             Toast.makeText(context, it.item_can_name.text.toString(), Toast.LENGTH_LONG).show()
                    var can_Name = it.item_can_name.text.toString()
             var json = JSONObject()
             json.put("canName", can_Name)
-
+            Log.d("etest", "보내기실행")
             var queue: RequestQueue = Volley.newRequestQueue(context)
             val request = object : JsonObjectRequest(
-                Request.Method.POST, "http://203.249.127.32:65009/bote/vote/votestarter/index", json,
+                Request.Method.POST, "http://203.249.127.32:65009/vlock/index", json,
                 Response.Listener { response ->
                     run {
-
+                        Log.d("etest", "보내기실행?")
                     }
                 }, null
             ) {
@@ -73,6 +70,8 @@ class AlertListViewAdapter(val context: Context): BaseAdapter() {
                 }
             }
             queue.add(request)
+            val temp = context as Activity
+            temp.finish()
         }
 
         return view

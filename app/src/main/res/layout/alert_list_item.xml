@@ -5,12 +5,10 @@
     <TableRow
             android:layout_width="419dp"
             android:layout_height="59dp" tools:layout_editor_absoluteY="1dp" tools:layout_editor_absoluteX="0dp">
-        <RadioButton
-                android:layout_width="61dp"
-                android:layout_height="match_parent" android:id="@+id/radioButton5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="253dp"
-                android:layout_height="61dp" android:id="@+id/item_can_name" android:gravity="center_vertical"/>
+                android:layout_height="61dp" android:id="@+id/item_can_name" android:gravity="center_vertical"
+                android:layout_marginStart="30dp"/>
     </TableRow>
 </android.support.constraint.ConstraintLayout>

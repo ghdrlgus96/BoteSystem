@@ -2,6 +2,7 @@ package embedded.block.vote
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.util.Log
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import embedded.block.vote.VoteListPagerAdapter
 import embedded.block.vote.R
+import embedded.block.vote.VoteResultActivity.Companion.voteNumber
 import kotlinx.android.synthetic.main.admin_start_item.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -27,14 +29,12 @@ class VoteListActivity : AppCompatActivity() {
         voteNumber.clear()
         resultVoteNumber.clear()
         super.onBackPressed()
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.votelist_main)
-
-        val pagerAdapter = VoteListPagerAdapter(supportFragmentManager)
-        val pager = findViewById<ViewPager>(R.id.Viewpage)
 
         var json = JSONObject()
         json.put("userNum", "null")
@@ -49,8 +49,6 @@ class VoteListActivity : AppCompatActivity() {
                     var string = arr_getList.toString()
                     VoteListAdapter.arr_getList = JSONArray(string)
                     //Log.d("ktext", arr_getList.getJSONObject(1).getString("voteNum").toString())
-                    pager.adapter = pagerAdapter
-                    pagerAdapter.notifyDataSetChanged()
 
                     for (i in 0..arr_getList.length() - 1)
                         voteNumber.add(arr_getList.getJSONObject(i).getString("voteNum").toString())
@@ -81,10 +79,11 @@ class VoteListActivity : AppCompatActivity() {
 
                     var string2 = arr_getResultList.toString()
                     VoteResultRecyclerAdapter.arr_getResultList = JSONArray(string2)
-                    Log.d("ptext", arr_getResultList.getJSONObject(1).getString("voteNum").toString())
+
 
                     for (i in 0..arr_getResultList.length() - 1)
                         resultVoteNumber.add(arr_getResultList.getJSONObject(i).getString("voteNum").toString())
+
                 }
             },
             null
@@ -97,9 +96,16 @@ class VoteListActivity : AppCompatActivity() {
             }
         }
         queuet.add(requestt)
+        var handler = Handler()
+        handler.postDelayed(Runnable {
+            val pagerAdapter = VoteListPagerAdapter(supportFragmentManager)
+            val pager = findViewById<ViewPager>(R.id.Viewpage)
+            pager.adapter = pagerAdapter
 
-        val tab = findViewById<TabLayout>(R.id.tablayout_main)
-        tab.setupWithViewPager(pager)
+            val tab = findViewById<TabLayout>(R.id.tablayout_main)
+            tab.setupWithViewPager(pager)
+            pagerAdapter.notifyDataSetChanged()
+        }, 500)
 
     }
     companion object {

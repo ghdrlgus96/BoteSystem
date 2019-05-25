@@ -48,6 +48,7 @@ class FirstFragment: Fragment()
 
             var intent = Intent(activity, VotepageActivity::class.java)
             intent.putExtra("votenum",VoteListActivity.voteNumber[position])
+            intent.putExtra("quittime", VoteListActivity.voteQuitTime[position])
             //Log.d("ktext",VoteListActivity.voteNumber[position])
             startActivity(intent)
         }

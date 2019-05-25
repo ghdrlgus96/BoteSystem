@@ -30,7 +30,8 @@ class VotepageActivity : AppCompatActivity() {
         setContentView(R.layout.votepage_alertdiaglog)
 
         var votenum = intent.getStringExtra("votenum")
-
+        var quittime = intent.getStringExtra("quittime")
+        Log.d("tetest", quittime)
 
         Log.d("ktext", votenum + "!")
 
@@ -46,7 +47,7 @@ class VotepageActivity : AppCompatActivity() {
                     var string = arr_getPage.toString()
                     AlertListViewAdapter.arr_getPage = JSONArray(string)
 
-                    var adapter = AlertListViewAdapter(this)
+                    var adapter = AlertListViewAdapter(this, quittime, votenum)
                     alert_listview.adapter = adapter
                     //Log.d("ktext", arr_getList.getJSONObject(1).getString("voteNum").toString())
                 }

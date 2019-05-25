@@ -50,8 +50,10 @@ class VoteListActivity : AppCompatActivity() {
                     VoteListAdapter.arr_getList = JSONArray(string)
                     //Log.d("ktext", arr_getList.getJSONObject(1).getString("voteNum").toString())
 
-                    for (i in 0..arr_getList.length() - 1)
+                    for (i in 0..arr_getList.length() - 1) {
                         voteNumber.add(arr_getList.getJSONObject(i).getString("voteNum").toString())
+                        voteQuitTime.add(arr_getList.getJSONObject(i).getString("quitTime").toString())
+                    }
 
                 }
             },
@@ -111,5 +113,6 @@ class VoteListActivity : AppCompatActivity() {
     companion object {
         var voteNumber = ArrayList<String>()
         var resultVoteNumber = ArrayList<String>()
+        var voteQuitTime = ArrayList<String>()
     }
 }

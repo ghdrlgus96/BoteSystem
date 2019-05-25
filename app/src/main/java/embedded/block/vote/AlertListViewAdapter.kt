@@ -115,7 +115,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
             queue2.add(request2)
 
 
-
             val temp = context as Activity
             temp.finish()
         }

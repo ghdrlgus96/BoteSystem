@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_weight="1"
-              android:background="#42A5F5">
+              android:background="@drawable/shadow_182523">
     <TextView android:id="@+id/voteCandidate"
               android:layout_width="0dp"
               android:layout_weight="1"
@@ -20,7 +20,7 @@
               android:layout_width="0dp"
               android:layout_weight="1"
               android:layout_height="wrap_content"
-              android:gravity="right|center_vertical"
+              android:gravity="right"
               android:text="4표"
               android:textColor="#ffffff"
               android:textSize="72dp"/>

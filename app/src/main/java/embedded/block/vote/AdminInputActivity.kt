@@ -1,6 +1,9 @@
 package embedded.block.vote
 
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.widget.TabLayout
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -51,46 +54,53 @@ class AdminInputActivity : AppCompatActivity() {
                         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
                         override fun afterTextChanged(s: Editable?) {
-                            if (editText_admin_input_search.text == null || editText_admin_input_search.text.length == 0) {
-                                var string2 = arr_getPart.toString()
-                                //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌ㅇ
-                                AdminInputAdapter.arr_getParticipation = JSONArray(string2)
-                                check()
-                                adapter.notifyDataSetChanged()
-                            } else if (editText_admin_input_search.text != null || editText_admin_input_search.text.length != 0) {
-                                var i = 0   //i는 반복문을 돌리기 위한 변수
-                                var temp = 0
-                                //리스트에서 해당 요소 위치를 찾아 JSONarray에서 제거해도 리스트에서는 바로 제거가 안됨
-                                //따라서 제거된 요소만큼 리스트의 위치를 늘려줄 변수가 필요함. temp 선언
-                                var temp2 = 0
-                                //0의 위치 부터 제거하지 않은 요소의 갯수를 세고 해당 요소부터 반복문 시작
-                                var num =
+
+                            var string2 = arr_getPart.toString()
+                            //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌ㅇ
+                            AdminInputAdapter.arr_getParticipation = JSONArray(string2)
+                            check()
+                            adapter.notifyDataSetChanged()
+                            var handler = Handler()
+                            handler.postDelayed(Runnable {
+
+
+                            var i = 0   //i는 반복문을 돌리기 위한 변수
+                            var temp = 0
+                            //리스트에서 해당 요소 위치를 찾아 JSONarray에서 제거해도 리스트에서는 바로 제거가 안됨
+                            //따라서 제거된 요소만큼 리스트의 위치를 늘려줄 변수가 필요함. temp 선언
+                            var temp2 = 0
+                            //0의 위치 부터 제거하지 않은 요소의 갯수를 세고 해당 요소부터 반복문 시작
+                            var num =
+                                findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
+                                    R.id.listview_admin_input_select
+                                ).firstVisiblePosition
+                            while (true) {
+                                Log.d("etest", "된다능느응느은" + num)
+                                if (i > num)
+                                    break
+                                if (!findViewById<ListView>(R.id.listview_admin_input_select).getChildAt(i + temp).textView_admin_input_item1.text.contains(
+                                        editText_admin_input_search.text
+                                    )
+                                ) {
+
+                                    temp++
+                                    AdminInputAdapter.arr_getParticipation.remove(i)
+                                    check()
+                                    adapter.notifyDataSetChanged()
+                                    num = num - 1
                                     findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
                                         R.id.listview_admin_input_select
                                     ).firstVisiblePosition
-                                while (true) {
-                                    if (i > num)
-                                        break
-                                    if (!findViewById<ListView>(R.id.listview_admin_input_select).getChildAt(i + temp).textView_admin_input_item1.text.contains(
-                                            editText_admin_input_search.text
-                                        )
-                                    ) {
-                                        temp++
-                                        AdminInputAdapter.arr_getParticipation.remove(i)
-                                        check()
-                                        adapter.notifyDataSetChanged()
-                                        num = num - 1
-                                        findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
-                                            R.id.listview_admin_input_select
-                                        ).firstVisiblePosition
-                                        i = temp2
-                                    } else {
-                                        i++
-                                        temp2++
-                                    }
+                                    i = temp2
+                                } else {
+                                    i++
+                                    temp2++
                                 }
+
                             }
+                            }, 100)
                         } //검색 기능 구현
+
                     })
 
                     button_admin_input_select.setOnClickListener { v: View? ->

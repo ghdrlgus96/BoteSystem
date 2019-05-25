@@ -15,6 +15,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.alert_list_item.view.*
@@ -26,6 +27,9 @@ import java.util.HashMap
 class AlertListViewAdapter(val context: Context, val quittime: String, val voteNum: String): BaseAdapter() {
     companion object {
         var arr_getPage = JSONArray()
+        var result_main = JSONArray()
+        var result_left = JSONArray()
+        var result_right = JSONArray()
     }
     /* 리스트뷰에서 보여줄 아이템(항목) 화면의 인플레이션을 위해 LayoutInflater 참조 */
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
@@ -105,7 +109,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     }
                 }, null
             ) {
-                @Throws(AuthFailureError::class)
                 override fun getHeaders(): MutableMap<String, String>? {
                     val headers = HashMap<String, String>()
                     headers.put("Content-Type", "application/json")
@@ -114,7 +117,67 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
             }
             queue2.add(request2)
 
+            var queue3: RequestQueue = Volley.newRequestQueue(context)
+            val request3 = object : StringRequest(
+                Request.Method.GET, "http://203.249.127.32:65009/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                Response.Listener { response ->
+                    run {
+                        var tmp_string = response.toString()
+                        result_main = JSONArray(tmp_string)
+                    }
+                }, null
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): MutableMap<String, String>? {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    return headers
+                }
+            }
+            queue3.add(request3)
 
+            var queue4: RequestQueue = Volley.newRequestQueue(context)
+            val request4 = object : StringRequest(
+                Request.Method.GET, "http://203.249.127.32:65010/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                Response.Listener { response ->
+                    run {
+                        var tmp_string = response.toString()
+                        result_left = JSONArray(tmp_string)
+                    }
+                }, null
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): MutableMap<String, String>? {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    return headers
+                }
+            }
+            queue4.add(request4)
+
+
+            var queue5: RequestQueue = Volley.newRequestQueue(context)
+            val request5 = object : StringRequest(
+                Request.Method.GET, "http://203.249.127.32:65011/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                Response.Listener { response ->
+                    run {
+                        var tmp_string = response.toString()
+                        result_right = JSONArray(tmp_string)
+                    }
+                }, null
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): MutableMap<String, String>? {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    return headers
+                }
+            }
+            queue5.add(request5)
+
+            Log.d("etest", "멘섭" + result_main.toString())
+            Log.d("etest", "렙섭" + result_left.toString())
+            Log.d("etest", "뢋섭" + result_right.toString())
             val temp = context as Activity
             temp.finish()
         }

@@ -4,26 +4,20 @@
                                              android:layout_height="match_parent">
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="395dp"
+            android:layout_width="match_parent"
             android:layout_height="715dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
         <TextView
-                android:text="후보자 선택"
                 android:layout_width="match_parent"
-                android:layout_height="53dp" android:id="@+id/textView6" android:textSize="30sp"
-                android:gravity="center"/>
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="111dp" android:id="@+id/page_vote_Name"/>
+                android:layout_height="110dp" android:id="@+id/textView6" android:textSize="36sp"
+                android:gravity="center" android:fontFamily="@font/goblin_one" android:text="후보 선택"
+                android:textColor="@android:color/background_dark"/>
 
         <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="466dp" android:id="@+id/radiogroup">
             <ListView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/alert_listview"/>
+                    android:layout_height="485dp" android:id="@+id/alert_listview"/>
         </RadioGroup>
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

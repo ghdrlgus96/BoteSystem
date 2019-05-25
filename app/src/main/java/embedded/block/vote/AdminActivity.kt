@@ -293,9 +293,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
 
             }
-            R.id.nav_send -> {
-
-            }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)

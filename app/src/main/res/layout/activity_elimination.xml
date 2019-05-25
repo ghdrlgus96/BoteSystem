@@ -8,10 +8,10 @@
         tools:context=".EliminationActivity">
 
     <TextView
-            android:text="회원 탈퇴 ㅠㅠ"
+            android:text="회원 탈퇴"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/eliminationText" android:textSize="30sp"
+            android:id="@+id/eliminationText" android:textSize="36sp"
             android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="110dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="111dp" android:layout_marginTop="151dp"

@@ -14,9 +14,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="126dp">
             <TextView
-                    android:text="투표에 참여하셨습니다!"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/textView4" android:gravity="center"
+                    android:layout_height="match_parent" android:id="@+id/alert_log" android:gravity="center"
                     android:textSize="24sp"/>
         </TableRow>
         <TableRow

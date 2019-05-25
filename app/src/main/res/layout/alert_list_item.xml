@@ -2,13 +2,19 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
+
     <TableRow
-            android:layout_width="419dp"
-            android:layout_height="59dp" tools:layout_editor_absoluteY="1dp" tools:layout_editor_absoluteX="0dp">
+            android:layout_width="match_parent"
+            android:layout_height="117dp" tools:layout_editor_absoluteY="1dp" tools:layout_editor_absoluteX="-6dp"
+            android:background="@drawable/check_background" android:gravity="center">
+        <ImageView
+                android:layout_width="102dp"
+                android:layout_height="match_parent" app:srcCompat="@drawable/check" android:id="@+id/imageView7"/>
         <TextView
                 android:text="TextView"
-                android:layout_width="253dp"
-                android:layout_height="61dp" android:id="@+id/item_can_name" android:gravity="center_vertical"
-                android:layout_marginStart="30dp"/>
+                android:layout_width="300dp"
+                android:layout_height="117dp" android:gravity="center_vertical"
+                android:textSize="30sp" android:fontFamily="@font/lilita_one" tools:layout_editor_absoluteY="163dp"
+                tools:layout_editor_absoluteX="97dp" android:id="@+id/item_can_name"/>
     </TableRow>
 </android.support.constraint.ConstraintLayout>

@@ -6,21 +6,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity">
+
     <TextView
             android:text="Login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/loginLogo" android:textSize="34sp"
-            android:fontFamily="sans-serif-black" android:textColor="#0000FF" android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="163dp" android:layout_marginTop="128dp"
+            android:layout_width="194dp"
+            android:layout_height="94dp"
+            android:id="@+id/loginLogo" android:textSize="60sp"
+            android:fontFamily="@font/lilita_one" android:textColor="#0000FF" android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="163dp" android:layout_marginTop="56dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="163dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginStart="163dp" app:layout_constraintHorizontal_bias="0.431" android:gravity="center"/>
     <ImageView
             android:layout_width="162dp"
-            android:layout_height="167dp" app:srcCompat="@drawable/vote_img"
+            android:layout_height="167dp" app:srcCompat="@drawable/vote_img2"
             android:id="@+id/loginImage"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="124dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="125dp" android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="125dp" android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@+id/loginLogo" app:layout_constraintHorizontal_bias="0.0"/>
     <EditText
             android:layout_width="wrap_content"
@@ -29,22 +30,24 @@
             android:ems="10"
             android:id="@+id/myID" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="99dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="99dp" app:layout_constraintTop_toBottomOf="@+id/idText"/>
+            android:layout_marginEnd="99dp" app:layout_constraintTop_toBottomOf="@+id/idText"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/myPass" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="99dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="99dp" app:layout_constraintTop_toBottomOf="@+id/idPass"/>
+            android:layout_marginEnd="99dp" app:layout_constraintTop_toBottomOf="@+id/idPass"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <Button
             android:text="아이디 찾기"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/findID" android:textColor="#0000FF"
             android:textStyle="bold" android:background="#00000000" android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="136dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="84dp"
             app:layout_constraintTop_toBottomOf="@+id/myPass"/>
     <Button
             android:text="비밀번호 찾기"
@@ -52,37 +55,47 @@
             android:layout_height="wrap_content"
             android:id="@+id/findPass" android:textColor="#0000FF"
             android:textStyle="bold" android:background="#00000000" android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/findID" app:layout_constraintTop_toBottomOf="@+id/myPass"/>
+            app:layout_constraintStart_toEndOf="@+id/findID" app:layout_constraintTop_toBottomOf="@+id/myPass"
+    />
     <Button
             android:text="로그인"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/loginBtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="57dp"
+            android:layout_width="182dp"
+            android:layout_height="41dp"
+            android:id="@+id/loginBtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="116dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="56dp"
             android:textColor="#FFFFFF" android:background="#0000FF" android:textStyle="bold"
-            android:fontFamily="sans-serif-black"/>
+            android:fontFamily="sans-serif-black" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/findPass"
+            app:layout_constraintVertical_bias="0.406" android:textSize="18sp" android:gravity="center"/>
     <Button
             android:text="회원가입"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/regBtn" android:layout_marginStart="37dp"
-            app:layout_constraintStart_toEndOf="@+id/loginBtn" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="57dp" android:textColor="#FFFFFF" android:background="#0000FF"
-            android:textStyle="bold" android:fontFamily="sans-serif-black"/>
+            android:id="@+id/regBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/findPass"
+            android:textColor="#0000FF"
+            android:background="#00000000"
+            android:textStyle="bold" android:fontFamily="sans-serif-black"
+            app:layout_constraintStart_toEndOf="@+id/findPass"
+            android:layout_marginStart="4dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:textSize="12sp"/>
     <TextView
             android:text="ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/idText" android:textSize="18sp"
             android:textColor="#0000FF" android:fontFamily="sans-serif-black"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
-            android:layout_marginTop="420dp" app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="96dp"
+            android:layout_marginTop="388dp" app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:text="Password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/idPass" android:textSize="18sp"
             android:textColor="#0000FF" android:fontFamily="sans-serif-black"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
-            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/myID"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="96dp"
+            app:layout_constraintTop_toBottomOf="@+id/myID"/>
+
+
 </android.support.constraint.ConstraintLayout>

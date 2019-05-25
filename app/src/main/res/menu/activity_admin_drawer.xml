@@ -6,37 +6,21 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_home"
-                android:icon="@drawable/ic_menu_camera"
                 android:title="투표 등록하기"/>
         <item
                 android:id="@+id/nav_start"
-                android:icon="@drawable/ic_menu_gallery"
                 android:title="투표 시작 및 종료"/>
         <item
                 android:id="@+id/nav_slideshow"
-                android:icon="@drawable/ic_menu_slideshow"
                 android:title="투표 중단하기"/>
         <item
                 android:id="@+id/nav_result"
-                android:icon="@drawable/ic_menu_manage"
                 android:title="투표 결과 보기"/>
         <item
                 android:id="@+id/user_settings"
-                android:icon="@drawable/ic_menu_manage"
                 android:title="사용자 환경 설정"/>
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="@string/menu_share"/>
-            <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="@string/menu_send"/>
-        </menu>
-    </item>
+
 
 </menu>

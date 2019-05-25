@@ -134,8 +134,58 @@ class AdminResultActivity : AppCompatActivity() {
         }
         queue1.add(request1)
 
+        var queueq: RequestQueue = Volley.newRequestQueue(this);
+        val requestq = object : JsonObjectRequest(
+            Request.Method.GET, "http://203.249.127.32:65009/vlock/serverconnection/eli/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"), json,
+            Response.Listener { response ->
+                run {
 
+                }
+            }, null
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String>? {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
+        }
+        queueq.add(requestq)
 
+        var queueqq: RequestQueue = Volley.newRequestQueue(this);
+        val requestqq = object : JsonObjectRequest(
+            Request.Method.GET, "http://203.249.127.32:65010/vlock/serverconnection/eli/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"), json,
+            Response.Listener { response ->
+                run {
+
+                }
+            }, null
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String>? {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
+        }
+        queueqq.add(requestqq)
+        var queueqqq: RequestQueue = Volley.newRequestQueue(this);
+        val requestqqq = object : JsonObjectRequest(
+            Request.Method.GET, "http://203.249.127.32:65011/vlock/serverconnection/eli/?voteNum=" + AdminResultAdapter.arr_getList.getJSONObject(intent.getIntExtra("position",0)).getInt("voteNum"), json,
+            Response.Listener { response ->
+                run {
+
+                }
+            }, null
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String>? {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
+        }
+        queueqqq.add(requestqqq)
         var handler = Handler()
         handler.postDelayed(Runnable {
             var queue2: RequestQueue = Volley.newRequestQueue(this);
@@ -205,6 +255,6 @@ class AdminResultActivity : AppCompatActivity() {
                 }
             }
             queue.add(request)
-        }, 1000)
+        }, 2000)
     }
 }

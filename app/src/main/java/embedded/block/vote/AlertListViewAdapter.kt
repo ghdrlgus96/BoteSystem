@@ -124,6 +124,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     run {
                         var tmp_string = response.toString()
                         result_main = JSONArray(tmp_string)
+                        Log.d("etest", result_main.toString())
                     }
                 }, null
             ) {
@@ -143,6 +144,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     run {
                         var tmp_string = response.toString()
                         result_left = JSONArray(tmp_string)
+                        Log.d("etest", result_left.toString())
                     }
                 }, null
             ) {
@@ -163,6 +165,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     run {
                         var tmp_string = response.toString()
                         result_right = JSONArray(tmp_string)
+                        Log.d("etest", result_right.toString())
                     }
                 }, null
             ) {
@@ -175,9 +178,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
             }
             queue5.add(request5)
 
-            Log.d("etest", "멘섭" + result_main.toString())
-            Log.d("etest", "렙섭" + result_left.toString())
-            Log.d("etest", "뢋섭" + result_right.toString())
             val temp = context as Activity
             temp.finish()
         }

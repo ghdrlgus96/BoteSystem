@@ -41,6 +41,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     lateinit var stop_view: View
     lateinit var user_setting_view: View
     lateinit var result_view: View
+    lateinit var start_view: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +61,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         stop_view = View.inflate(this, R.layout.admin_stop, null)
         user_setting_view = View.inflate(this, R.layout.user_setting, null)
         result_view = View.inflate(this, R.layout.admin_start, null)
+        start_view = View.inflate(this,R.layout.admin_start, null)
 
         navView.setNavigationItemSelectedListener(this)
     }
@@ -172,9 +174,10 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 }
             } //투표 등록 눌렀을때
             R.id.nav_start -> {
-                admin_content.addView(View.inflate(this, R.layout.admin_start, null))
-                val intent = Intent(this, AdminVoteStart::class.java)
-                startActivity(intent)
+                admin_content.removeAllViews()
+                admin_content.addView(start_view)
+               val intent = Intent(this, AdminVoteStart::class.java)
+               startActivity(intent)
 
             }
             R.id.nav_slideshow -> {

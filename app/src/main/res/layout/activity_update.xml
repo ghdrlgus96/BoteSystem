@@ -5,22 +5,23 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UpdateActivity">
+        tools:context=".UpdateActivity"
+android:background="@drawable/outside">
 
     <TextView
             android:text="비밀번호"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changePass" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/changeInfo"/>
+            app:layout_constraintTop_toBottomOf="@+id/changeInfo" android:layout_marginTop="16dp"/>
     <TextView
             android:text="전화번호"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changePhone" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"  app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp" android:layout_marginTop="38dp"
             app:layout_constraintTop_toBottomOf="@+id/changePassCheckText"/>
     <EditText
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changeClass" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" android:layout_marginTop="45dp"
+            android:textStyle="bold"  android:layout_marginTop="45dp"
             app:layout_constraintTop_toBottomOf="@+id/changePhoneText" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"/>
     <EditText
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changeAuthor" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"  app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp" android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@+id/changeClassText"/>
     <RadioGroup
@@ -64,12 +65,12 @@
                 android:text="투표 등록자"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/changeAuthor1" android:layout_weight="1"
-                android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"/>
+                android:fontFamily="sans-serif-black" android:textStyle="bold"/>
         <RadioButton
                 android:text="유권자"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/changeAuthor2" android:layout_weight="1"
-                android:fontFamily="sans-serif-black" android:textColor="#0000FF" android:textStyle="bold"/>
+                android:fontFamily="sans-serif-black" android:textStyle="bold"/>
     </RadioGroup>
     <EditText
             android:layout_width="wrap_content"
@@ -91,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changePassCheck"
-            android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
             android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/changePassText"/>
     <ListView
@@ -106,22 +107,23 @@
             android:layout_height="wrap_content"
             android:id="@+id/changeClassButton" app:layout_constraintStart_toEndOf="@+id/changeClassText"
             android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/changeList"
-            android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#FFFFFF"
-            android:background="#0000FF"/>
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+           />
     <TextView
             android:text="회원 정보 변경"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/changeInfo" android:textSize="30sp"
-            android:textStyle="bold" android:textColor="#0000FF" android:fontFamily="sans-serif-black"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="110dp"/>
+            android:textStyle="bold" android:fontFamily="sans-serif-black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="108dp"
+    />
     <Button
             android:text="저장"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/changeSave" android:background="#0000FF"
-            android:textStyle="bold" android:fontFamily="sans-serif-black" android:textColor="#FFFFFF"
+            android:id="@+id/changeSave"
+            android:textStyle="bold" android:fontFamily="sans-serif-black"
             android:layout_marginTop="17dp" app:layout_constraintTop_toBottomOf="@+id/changeAuthorGroup"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="161dp"/>
 </android.support.constraint.ConstraintLayout>

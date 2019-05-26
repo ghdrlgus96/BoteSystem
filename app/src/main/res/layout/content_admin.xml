@@ -16,4 +16,11 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:textSize="40dp"
+              android:text="당신의 소중한 결정\n블록체인 투표로\n행사하세요"
+              tools:layout_editor_absoluteX="48dp"
+              tools:layout_editor_absoluteY="466dp"/>
 </android.support.constraint.ConstraintLayout>

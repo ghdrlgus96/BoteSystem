@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterActivity">
+        tools:context=".RegisterActivity"
+android:background="@drawable/outside">
 
     <EditText
             android:layout_width="wrap_content"
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regID" android:textStyle="bold"
-            android:fontFamily="sans-serif-black" android:textColor="#0000FF"
+            android:fontFamily="sans-serif-black"
             android:layout_marginStart="48dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/regName"/>
@@ -41,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regName" android:textStyle="bold"
-            android:fontFamily="sans-serif-black" android:textColor="#0000FF"
+            android:fontFamily="sans-serif-black"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="56dp" android:layout_marginTop="72dp"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -59,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regPhone" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="36dp" android:layout_marginTop="44dp"
             app:layout_constraintTop_toBottomOf="@+id/regPassFindAnswer"/>
     <EditText
@@ -76,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regClass" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF" app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"  app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="36dp" android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/regPhone"/>
     <TextView
@@ -84,17 +85,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regPassFindQuestion"
-            android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/regPassCheck"/>
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="36dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/regPassCheck"/>
     <TextView
             android:text="비밀번호 찾기 답변"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regPassFindAnswer"
-            android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/answerList"/>
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="36dp"
+            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/answerList"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,11 +111,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regNeedButton" android:textColor="#FFFFFF"
-            android:textStyle="bold" android:fontFamily="sans-serif-black" android:background="#0000FF"
+            android:textStyle="bold" android:fontFamily="sans-serif-black"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="160dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="163dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/regAuthorGroup"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/regAuthorGroup"
     />
     <EditText
             android:layout_width="wrap_content"
@@ -139,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:id="@+id/regPass" android:fontFamily="sans-serif-black"
-            android:textStyle="bold" android:textColor="#0000FF"
+            android:textStyle="bold"
             android:layout_marginStart="48dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@+id/regID"/>
@@ -148,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="21dp"
             android:id="@+id/regPassCheck" android:textStyle="bold"
-            android:fontFamily="sans-serif-black" android:textColor="#0000FF"
+            android:fontFamily="sans-serif-black"
             android:layout_marginStart="44dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="48dp"
             app:layout_constraintTop_toBottomOf="@+id/regPass"/>
@@ -168,19 +169,19 @@
                 android:text="투표 등록자"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/regAuthor1" android:layout_weight="1"
-                android:textColor="#0000FF" android:textStyle="bold" android:fontFamily="sans-serif-black"/>
+               android:textStyle="bold" android:fontFamily="sans-serif-black"/>
         <RadioButton
                 android:text="유권자"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/regAuthor2" android:layout_weight="1"
-                android:fontFamily="sans-serif-black" android:textStyle="bold" android:textColor="#0000FF"/>
+                android:fontFamily="sans-serif-black" android:textStyle="bold" />
     </RadioGroup>
     <TextView
             android:text="등급"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/regAuthor" android:textStyle="bold"
-            android:fontFamily="sans-serif-black" android:textColor="#0000FF" android:layout_marginStart="44dp"
+            android:fontFamily="sans-serif-black"  android:layout_marginStart="44dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="60dp"
             app:layout_constraintTop_toBottomOf="@+id/regClass"/>
     <TextView
@@ -188,5 +189,5 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" tools:layout_editor_absoluteY="1dp"
             tools:layout_editor_absoluteX="-4dp" android:id="@+id/textView5" android:gravity="center"
-            android:textSize="30sp" android:textColor="#0000FF"/>
+            android:textSize="25sp" />
 </android.support.constraint.ConstraintLayout>

@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -34,7 +38,7 @@ import java.util.Date;
 
 public class AdminVoteStart extends AppCompatActivity implements View.OnClickListener{
 
-
+    Toolbar toolbar;
     private RequestQueue queue;
     public static Activity th;
     private JSONObject jsonObject = new JSONObject();
@@ -44,6 +48,10 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_start);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        setSupportActionBar(toolbar);
+
         final ListView listView = (ListView) findViewById(R.id.admin_start);
         th = this;
         //여기다 투표목록받아와야함
@@ -110,7 +118,15 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent);
             }
         });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
+
+
 
     @Override
     public void onClick(View v) {

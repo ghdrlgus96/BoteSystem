@@ -117,7 +117,7 @@ android:background="@drawable/outside">
             android:textStyle="bold" android:fontFamily="sans-serif-black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="108dp"
-    />
+            android:textColor="@color/colorPrimary"/>
     <Button
             android:text="저장"
             android:layout_width="wrap_content"

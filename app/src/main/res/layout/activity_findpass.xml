@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FindpassActivity"
-android:background="@drawable/outside">
+        android:background="@drawable/outside">
 
     <EditText
             android:layout_width="wrap_content"
@@ -16,7 +16,8 @@ android:background="@drawable/outside">
             android:id="@+id/findPassIDText"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="96dp"
             android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/findPassID"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="102dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="102dp"
+            android:textColor="@color/colorPrimary"/>
     <TextView
             android:text="아이디"
             android:layout_width="wrap_content"
@@ -24,7 +25,8 @@ android:background="@drawable/outside">
             android:id="@+id/findPassID" android:fontFamily="sans-serif-black"
             android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="96dp" android:layout_marginTop="148dp"
-            app:layout_constraintTop_toBottomOf="@+id/findPassLogo"/>
+            app:layout_constraintTop_toBottomOf="@+id/findPassLogo"
+            android:textColor="@color/colorPrimaryDark"/>
     <TextView
             android:text="비밀번호 찾기"
             android:layout_width="wrap_content"
@@ -33,7 +35,8 @@ android:background="@drawable/outside">
             android:textStyle="bold" android:fontFamily="sans-serif-black"
             android:layout_marginTop="164dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="118dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="111dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="111dp"
+            android:textColor="@color/colorPrimary"/>
     <Button
             android:text="찾기"
             android:layout_width="wrap_content"

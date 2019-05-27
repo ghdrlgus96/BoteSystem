@@ -15,5 +15,5 @@
             android:dividerHeight="1.5dp"
             tools:layout_editor_absoluteX="0dp"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="56dp"/>
+            tools:layout_editor_absoluteY="56dp" android:background="#D3D3D3"/>
 </android.support.constraint.ConstraintLayout>

@@ -189,5 +189,10 @@ android:background="@drawable/outside">
             android:layout_width="match_parent"
             android:layout_height="40dp" tools:layout_editor_absoluteY="1dp"
             tools:layout_editor_absoluteX="-4dp" android:id="@+id/textView5" android:gravity="center"
-            android:textSize="25sp" />
+            android:textSize="25sp" android:textStyle="bold" android:textColor="@color/colorPrimary"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="18dp"
+            android:layout_height="25dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

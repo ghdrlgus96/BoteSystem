@@ -32,11 +32,11 @@
                 android:text="투표 결과"
                 android:layout_width="match_parent"
                 android:layout_height="146dp" android:id="@+id/textView4" android:textSize="42sp"
-                android:gravity="center"/>
+                android:gravity="center" android:background="#D3D3D3" android:textColor="@color/colorPrimary"/>
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" tools:layout_editor_absoluteY="96dp"
                 tools:layout_editor_absoluteX="0dp"
-                android:id="@+id/voteresult_listview"/>
+                android:id="@+id/voteresult_listview" android:background="#D3D3D3"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

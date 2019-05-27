@@ -6,7 +6,9 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" tools:layout_editor_absoluteY="8dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            tools:layout_editor_absoluteY="8dp"
             tools:layout_editor_absoluteX="8dp">
 
         <android.support.v7.widget.Toolbar
@@ -34,9 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp" android:id="@+id/textView6" android:textSize="36sp"
                 android:gravity="center" android:fontFamily="@font/goblin_one" android:text="후보 선택"
-                android:textColor="@android:color/background_dark"/>
+                android:textColor="@android:color/background_dark" android:background="#D3D3D3"/>
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/alert_listview"/>
+                android:layout_height="wrap_content" android:id="@+id/alert_listview" android:background="#D3D3D3"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

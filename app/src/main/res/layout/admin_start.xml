@@ -11,7 +11,22 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#548093"
-            app:popupTheme="@style/AppTheme.PopupOverlay" tools:ignore="MissingConstraints"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay" tools:ignore="MissingConstraints">
+        <ImageView
+                android:id="@+id/logoXmarks"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:src="@drawable/vote_img2"/>
+        <ImageView
+                android:id="@+id/logoXmarks2"
+                android:layout_width="50dp"
+                android:layout_height="55dp"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:src="@drawable/titlelogo"/>
+    </android.support.v7.widget.Toolbar>
 
     <ListView
             android:id="@+id/admin_start"

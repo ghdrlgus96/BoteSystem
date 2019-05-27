@@ -2,22 +2,41 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
+
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="715dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+            android:layout_height="match_parent" tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize" android:id="@+id/votepage_toolbar">
+            <ImageView
+                    android:id="@+id/logoXmarks"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/vote_img2"/>
+            <ImageView
+                    android:id="@+id/logoXmarks2"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/titlelogo"/>
+        </android.support.v7.widget.Toolbar>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="110dp" android:id="@+id/textView6" android:textSize="36sp"
+                android:layout_height="90dp" android:id="@+id/textView6" android:textSize="36sp"
                 android:gravity="center" android:fontFamily="@font/goblin_one" android:text="후보 선택"
                 android:textColor="@android:color/background_dark"/>
-
-        <RadioGroup
+        <ListView
                 android:layout_width="match_parent"
-                android:layout_height="466dp" android:id="@+id/radiogroup">
-            <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="485dp" android:id="@+id/alert_listview"/>
-        </RadioGroup>
+                android:layout_height="wrap_content" android:id="@+id/alert_listview"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

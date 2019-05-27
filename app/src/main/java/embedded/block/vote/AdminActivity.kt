@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.admin_input.*
+import kotlinx.android.synthetic.main.admin_result.*
 import kotlinx.android.synthetic.main.admin_start.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.content_admin.*
@@ -62,7 +63,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         input_view = View.inflate(this, R.layout.admin_input, null)
         stop_view = View.inflate(this, R.layout.admin_stop, null)
         user_setting_view = View.inflate(this, R.layout.user_setting, null)
-        result_view = View.inflate(this, R.layout.admin_start, null)
+        result_view = View.inflate(this, R.layout.admin_result, null)
         start_view = View.inflate(this,R.layout.admin_start, null)
 
         navView.setNavigationItemSelectedListener(this)
@@ -177,7 +178,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             } //투표 등록 눌렀을때
             R.id.nav_start -> {
                 admin_content.removeAllViews()
-                admin_content.addView(start_view)
                val intent = Intent(this, AdminVoteStart::class.java)
                startActivity(intent)
 
@@ -254,7 +254,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                                 arr_getName.add(AdminResultAdapter.arr_getList.getJSONObject(i).getString("voteName"))
 
                             var madapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, arr_getName)
-                            admin_start.setOnItemClickListener { parent, view, position, id ->
+                            admin_result.setOnItemClickListener { parent, view, position, id ->
                                 var intent = Intent(this, AdminResultActivity::class.java)
                                 Log.d("etest", "포지션" + position)
                                 intent.putExtra("position", position)
@@ -262,7 +262,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                                 startActivity(intent)
 
                             }
-                            admin_start.adapter = madapter
+                            admin_result.adapter = madapter
 
                         }
                     },

@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_admin"/>
+    <include layout="@layout/content_admin" android:layout_width="match_parent"/>
 
 </android.support.design.widget.CoordinatorLayout>

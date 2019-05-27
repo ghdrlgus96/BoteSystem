@@ -279,21 +279,8 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
             }
             R.id.user_settings -> {
-                Log.d("etest", "왜안나오냐")
                 admin_content.removeAllViews()
                 admin_content.addView(user_setting_view)
-                Log.d("etest", "흠")
-                if(button_user_setting_change.text == "정보변경"){
-                    button_user_setting_change.setText(" ")
-                    Log.d("etest", "변경1")}
-                else if(button_user_setting_change.text == " "){
-                    button_user_setting_change.setText("a")
-                    Log.d("etest", "변경2")}
-                else if(button_user_setting_change.text == "a"){
-                    button_user_setting_change.setText("정보변경")
-                    Log.d("etest", "변경2")}
-
-                //button_user_setting_change.append(" ")
                 button_user_setting_change.setOnClickListener { v: View? ->
                     var intent_change = Intent(this, UpdateActivity::class.java)
                     startActivityForResult(intent_change, 666)

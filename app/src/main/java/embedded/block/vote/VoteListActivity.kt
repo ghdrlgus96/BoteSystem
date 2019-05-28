@@ -107,7 +107,7 @@ class VoteListActivity : AppCompatActivity() {
             val tab = findViewById<TabLayout>(R.id.tablayout_main)
             tab.setupWithViewPager(pager)
             pagerAdapter.notifyDataSetChanged()
-        }, 500)
+        }, 700)
 
     }
     companion object {

@@ -48,8 +48,9 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_start);
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         final ListView listView = (ListView) findViewById(R.id.admin_start);

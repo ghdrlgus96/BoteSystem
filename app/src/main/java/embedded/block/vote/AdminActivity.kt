@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -45,6 +46,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     lateinit var user_setting_view: View
     lateinit var result_view: View
     lateinit var start_view: View
+    lateinit var image_view: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +67,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         user_setting_view = View.inflate(this, R.layout.user_setting, null)
         result_view = View.inflate(this, R.layout.admin_result, null)
         start_view = View.inflate(this,R.layout.admin_start, null)
+        image_view = View.inflate(this, R.layout.image_content, null)
 
         navView.setNavigationItemSelectedListener(this)
     }
@@ -178,6 +181,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             } //투표 등록 눌렀을때
             R.id.nav_start -> {
                 admin_content.removeAllViews()
+                admin_content.addView(image_view)
                val intent = Intent(this, AdminVoteStart::class.java)
                startActivity(intent)
 

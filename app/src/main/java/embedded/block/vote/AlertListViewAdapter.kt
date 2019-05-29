@@ -3,6 +3,7 @@ package embedded.block.vote
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -62,8 +63,27 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
             json.put("voteNum", voteNum)
             json.put("userNum", LoginActivity.userNum)
 
+            var json_bote = JSONObject()
+            json_bote.put("voteNum", voteNum)
+            json_bote.put("userNum", LoginActivity.userNum)
             Log.d("etest", "보내기실행")
-
+            var queue0: RequestQueue = Volley.newRequestQueue(context)
+            val request0 = object : JsonObjectRequest(
+                Request.Method.PUT, "http://203.249.127.32:65001/bote/vote/votestarter/index", json_bote,
+                Response.Listener { response ->
+                    run {
+                        Log.d("tetest", "65009")
+                    }
+                }, null
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): MutableMap<String, String>? {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    return headers
+                }
+            }
+            queue0.add(request0)
             var queue: RequestQueue = Volley.newRequestQueue(context)
             val request = object : JsonObjectRequest(
                 Request.Method.POST, "http://203.249.127.32:65009/vlock/index", json,
@@ -116,67 +136,81 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                 }
             }
             queue2.add(request2)
-
-            var queue3: RequestQueue = Volley.newRequestQueue(context)
-            val request3 = object : StringRequest(
-                Request.Method.GET, "http://203.249.127.32:65009/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
-                Response.Listener { response ->
-                    run {
-                        var tmp_string = response.toString()
-                        result_main = JSONArray(tmp_string)
-                        Log.d("etest", result_main.toString())
+            var handler = Handler()
+            handler.postDelayed({
+                var queue3: RequestQueue = Volley.newRequestQueue(context)
+                val request3 = object : StringRequest(
+                    Request.Method.GET,
+                    "http://203.249.127.32:65009/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                    Response.Listener { response ->
+                        run {
+                            var tmp_string = response.toString()
+                            result_main = JSONArray(tmp_string)
+                            Log.d("etest", result_main.toString())
+                        }
+                    },
+                    null
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String>? {
+                        val headers = HashMap<String, String>()
+                        headers.put("Content-Type", "application/json")
+                        return headers
                     }
-                }, null
-            ) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): MutableMap<String, String>? {
-                    val headers = HashMap<String, String>()
-                    headers.put("Content-Type", "application/json")
-                    return headers
                 }
-            }
-            queue3.add(request3)
+                queue3.add(request3)
 
-            var queue4: RequestQueue = Volley.newRequestQueue(context)
-            val request4 = object : StringRequest(
-                Request.Method.GET, "http://203.249.127.32:65010/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
-                Response.Listener { response ->
-                    run {
-                        var tmp_string = response.toString()
-                        result_left = JSONArray(tmp_string)
-                        Log.d("etest", result_left.toString())
+                var queue4: RequestQueue = Volley.newRequestQueue(context)
+                val request4 = object : StringRequest(
+                    Request.Method.GET,
+                    "http://203.249.127.32:65010/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                    Response.Listener { response ->
+                        run {
+                            var tmp_string = response.toString()
+                            result_left = JSONArray(tmp_string)
+                            Log.d("etest", result_left.toString())
+                        }
+                    },
+                    null
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String>? {
+                        val headers = HashMap<String, String>()
+                        headers.put("Content-Type", "application/json")
+                        return headers
                     }
-                }, null
-            ) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): MutableMap<String, String>? {
-                    val headers = HashMap<String, String>()
-                    headers.put("Content-Type", "application/json")
-                    return headers
                 }
-            }
-            queue4.add(request4)
+                queue4.add(request4)
 
 
-            var queue5: RequestQueue = Volley.newRequestQueue(context)
-            val request5 = object : StringRequest(
-                Request.Method.GET, "http://203.249.127.32:65011/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
-                Response.Listener { response ->
-                    run {
-                        var tmp_string = response.toString()
-                        result_right = JSONArray(tmp_string)
-                        Log.d("etest", result_right.toString())
+                var queue5: RequestQueue = Volley.newRequestQueue(context)
+                val request5 = object : StringRequest(
+                    Request.Method.GET,
+                    "http://203.249.127.32:65011/vlock/serverconnection/leftserver/?voteNum=" + voteNum,
+                    Response.Listener { response ->
+                        run {
+                            var tmp_string = response.toString()
+                            result_right = JSONArray(tmp_string)
+                            Log.d("etest", result_right.toString())
+                        }
+                    },
+                    null
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String>? {
+                        val headers = HashMap<String, String>()
+                        headers.put("Content-Type", "application/json")
+                        return headers
                     }
-                }, null
-            ) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): MutableMap<String, String>? {
-                    val headers = HashMap<String, String>()
-                    headers.put("Content-Type", "application/json")
-                    return headers
                 }
-            }
-            queue5.add(request5)
+                queue5.add(request5)
+                for(i in 0..(VoteListAdapter.arr_getList.length()-1))
+                {
+                    if(VoteListAdapter.arr_getList.getJSONObject(i).getInt("voteNum").toString() == voteNum)
+                        VoteListAdapter.arr_getList.remove(i)
+                    FirstFragment.adapter?.notifyDataSetChanged()
+                }
+            }, 500)
 
             val temp = context as Activity
             temp.finish()

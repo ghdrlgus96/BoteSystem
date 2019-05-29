@@ -175,6 +175,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                         }
                         queue.add(request)
                         admin_content.removeAllViews()
+                        admin_content.addView(image_view)
                         Toast.makeText(this, "투표 등록 완료!", Toast.LENGTH_SHORT).show()
                     }
                 }

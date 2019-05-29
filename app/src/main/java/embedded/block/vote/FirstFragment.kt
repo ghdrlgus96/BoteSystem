@@ -18,7 +18,9 @@ import kotlinx.android.synthetic.main.list_item_shop.*
 
 class FirstFragment: Fragment()
 {
-
+    companion object {
+        var adapter:VoteListAdapter? = null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,7 +34,7 @@ class FirstFragment: Fragment()
         return view
     }
 
-    var adapter:VoteListAdapter? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
 

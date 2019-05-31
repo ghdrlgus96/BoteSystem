@@ -1,5 +1,6 @@
 package embedded.block.vote
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -19,7 +20,6 @@ class VotepageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.votepage_alertdiaglog)
-
         var votenum = intent.getStringExtra("votenum")
         var quittime = intent.getStringExtra("quittime")
 

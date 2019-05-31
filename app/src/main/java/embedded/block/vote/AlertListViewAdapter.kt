@@ -2,6 +2,7 @@ package embedded.block.vote
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
@@ -204,9 +205,12 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     FirstFragment.adapter?.notifyDataSetChanged()
                 }
             }, 500)
-
-            val temp = context as Activity
-            temp.finish()
+            var homeIntent = Intent(context, VoteListActivity::class.java)
+            homeIntent.addCategory(Intent.CATEGORY_HOME)
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            VoteListActivity.voteNumber.clear()
+            VoteListActivity.resultVoteNumber.clear()
+            context.startActivity(homeIntent)
         }
 
         return view

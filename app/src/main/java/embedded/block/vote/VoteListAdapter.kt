@@ -1,7 +1,6 @@
 package embedded.block.vote
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ class VoteListAdapter(val context: Context): BaseAdapter() {
 
 
     override fun getCount(): Int {
-        Log.d("ktest", arr_getList.length().toString())
         return arr_getList.length()
     }
 
@@ -30,7 +28,6 @@ class VoteListAdapter(val context: Context): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val view = convertView ?: mInflater.inflate(R.layout.list_item_shop, parent, false)
 
-        Log.d("etest", "새봄!")
         view.findViewById<TextView>(R.id.list_VoteName).text =
             getItem(position).getString("voteName")
         view.findViewById<TextView>(R.id.list_Date).text =

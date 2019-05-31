@@ -3,8 +3,6 @@ package embedded.block.vote
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -13,7 +11,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.app_bar_admin.*
 import org.json.JSONObject
 import java.util.*
 
@@ -21,7 +18,6 @@ import java.util.*
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //setTheme(android.R.style.Theme_NoDisplay)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -49,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
     fun login(myid: String, mypass: String) {
         var json = JSONObject()
         json.put("myid", "null!")
-        //Log.d("embedded", json.toString())
+
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
             Response.Listener { response ->
@@ -59,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                         var tmp = response.getString("userclassnum")
                         var tempList = tmp.split(",")
 
-                        //로그아웃 시 userClass는 비워주자 아니면 자꾸 추가됨
+
                         for (i in 0..tempList.size - 1)
                             userClass.add(tempList.get(i))
 

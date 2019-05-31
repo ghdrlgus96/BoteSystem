@@ -1,7 +1,6 @@
 package embedded.block.vote
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ class AdminInputAdapter(val context: Context) : BaseAdapter() {
     var temp = false
     val mInflater: LayoutInflater = LayoutInflater.from(context)
     override fun getCount(): Int {
-        Log.d("etest", arr_getParticipation.length().toString())
         return arr_getParticipation.length()
     }
 
@@ -29,7 +27,6 @@ class AdminInputAdapter(val context: Context) : BaseAdapter() {
         val view = convertView ?: mInflater.inflate(R.layout.admin_input_select, parent, false)
 
         if (temp == false) {
-            Log.d("etest", "새봄!")
             view.findViewById<TextView>(R.id.textView_admin_input_item1).text =
                 getItem(position).getString("userName")
             view.findViewById<TextView>(R.id.textView_admin_input_item2).text =

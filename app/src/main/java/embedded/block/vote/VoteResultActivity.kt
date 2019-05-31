@@ -2,7 +2,6 @@ package embedded.block.vote
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -30,11 +29,10 @@ class VoteResultActivity : AppCompatActivity() {
                 "http://203.249.127.32:65001/bote/vote/voteresulter/voter/?voteNum=" + resultVoteNum,
                 Response.Listener { response ->
                     run {
-                        Log.d("ktext", response.toString())
                         val arr_ResultList = JSONArray(response.toString())
                         var string = arr_ResultList.toString()
                         VoteResultListAdapter.arr_ResultList = JSONArray(string)
-                        Log.d("etest", "제헌확인" + string)
+
                         var adapter = VoteResultListAdapter(this)
                         voteresult_listview.adapter = adapter
                     }

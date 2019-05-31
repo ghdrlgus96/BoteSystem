@@ -2,20 +2,16 @@ package embedded.block.vote
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -27,7 +23,6 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.admin_input.*
 import kotlinx.android.synthetic.main.admin_result.*
-import kotlinx.android.synthetic.main.admin_start.*
 import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.content_admin.*
 import kotlinx.android.synthetic.main.user_setting.*
@@ -37,11 +32,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-//제허짱
-//성빈이 왔다감
 class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    var arr_voter = ArrayList<Int>()    //투표 참여자 선언
-    lateinit var input_view: View   //투표 참여 화면 늦은 초기화
+    var arr_voter = ArrayList<Int>()
+    lateinit var input_view: View
     lateinit var stop_view: View
     lateinit var user_setting_view: View
     lateinit var result_view: View
@@ -61,7 +54,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        //늦은 초기화 한 애들 인플레이션
+
         input_view = View.inflate(this, R.layout.admin_input, null)
         stop_view = View.inflate(this, R.layout.admin_stop, null)
         user_setting_view = View.inflate(this, R.layout.user_setting, null)
@@ -81,23 +74,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         }
     }
 
-    /*
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.admin, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-*/
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
 
@@ -109,15 +85,14 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 var adapter_canList = ArrayAdapter(this, android.R.layout.simple_list_item_1, arr_can)
                 listViw_admin_input_can.adapter = adapter_canList
 
-
                 //투표 참여자 선택 인텐트 불러옴
                 button_admin_input_callSelect.setOnClickListener { v: View? ->
                     val intent = Intent(this, AdminInputActivity::class.java)
                     startActivityForResult(intent, 0)
                 }
+
                 //투표 후보자 입력 다이얼로그 불러옴
                 button_admin_input_can.setOnClickListener { v: View? ->
-                    Log.d("etest", "다이얼로그 테스트")
                     val alertDialogBuilder = android.app.AlertDialog.Builder(this)
                     alertDialogBuilder.setTitle("후보자 입력")
                     alertDialogBuilder.setMessage("후보자 이름을 입력하세요")
@@ -134,6 +109,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     }
                     alertDialogBuilder.show()
                 }
+
                 //서버에 투표 등록
                 button_admin_inputGo.setOnClickListener { v: View? ->
                     if(arr_can.size == 0 || arr_voter.size == 0 ||
@@ -161,7 +137,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                             json_toServer,
                             Response.Listener { response ->
                                 run {
-                                    Log.d("etest", response.toString())
+
                                 }
                             },
                             null
@@ -202,10 +178,8 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                             var nowTime = format.format(System.currentTimeMillis())
                             var i = 0
                             while(i <= (arr_getlist.length()-1)) {
-                                Log.d("etest", "dsfs"+arr_getlist.getJSONObject(i).getString("quitTime"))
                                 if (arr_getlist.getJSONObject(i).getString("quitTime") == "null" ||
                                     arr_getlist.getJSONObject(i).getString("quitTime") < nowTime) {
-                                    Log.d("etest", arr_getlist.getJSONObject(i).toString())
                                     arr_getlist.remove(i)
                                     i = 0
                                 }
@@ -213,7 +187,6 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                                     i++
                             }
                             AdminStopAdapter.arr_getlistforStop = arr_getlist
-                            Log.d("etest", "rrrrr" + AdminStopAdapter.arr_getlistforStop.toString())
                             var adapter = AdminStopAdapter(this)
                             listView_admin_stoplist.adapter = adapter
                         }
@@ -234,6 +207,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 admin_content.addView(result_view)
                 var queue: RequestQueue = Volley.newRequestQueue(this);
                 var arr_getName = ArrayList<String>()
+
                 val request = object : StringRequest(
                     Request.Method.GET,
                     "http://203.249.127.32:65001/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
@@ -261,9 +235,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                             var madapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, arr_getName)
                             admin_result.setOnItemClickListener { parent, view, position, id ->
                                 var intent = Intent(this, AdminResultActivity::class.java)
-                                Log.d("etest", "포지션" + position)
                                 intent.putExtra("position", position)
-                                Log.d("etest", "열림")
                                 startActivity(intent)
 
                             }
@@ -328,7 +300,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                         adpater.notifyDataSetChanged()
                     }
                     666 -> {
-                        Log.d("finish", data?.getStringExtra("finish"))
+
                     }
                 }
             }

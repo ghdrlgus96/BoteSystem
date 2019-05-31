@@ -1,7 +1,6 @@
 package embedded.block.vote
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.TextView
 import org.json.JSONArray
 
 class AdminResultAdapter(val context: Context) : BaseAdapter() {
-
     companion object {
         var arr_getList = JSONArray()
         var arr_getResult = JSONArray()
@@ -18,7 +16,6 @@ class AdminResultAdapter(val context: Context) : BaseAdapter() {
 
     val mInflater: LayoutInflater = LayoutInflater.from(context)
     override fun getCount(): Int {
-        Log.d("etest", arr_getResult.length().toString())
         return arr_getResult.length()
     }
 

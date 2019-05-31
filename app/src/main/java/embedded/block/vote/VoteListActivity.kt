@@ -5,24 +5,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import embedded.block.vote.VoteListPagerAdapter
-import embedded.block.vote.R
-import embedded.block.vote.VoteResultActivity.Companion.voteNumber
-import kotlinx.android.synthetic.main.admin_start_item.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
-import java.text.SimpleDateFormat;
 
-//(제헌)투표목록 화면 Mainactivity
 class VoteListActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
@@ -44,11 +36,9 @@ class VoteListActivity : AppCompatActivity() {
             "http://203.249.127.32:65001/bote/vote/votestarter/getlist/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
-                    Log.d("ktext", response.toString())
                     val arr_getList = JSONArray(response.toString())
                     var string = arr_getList.toString()
                     VoteListAdapter.arr_getList = JSONArray(string)
-                    //Log.d("ktext", arr_getList.getJSONObject(1).getString("voteNum").toString())
 
                     for (i in 0..arr_getList.length() - 1) {
                         voteNumber.add(arr_getList.getJSONObject(i).getString("voteNum").toString())
@@ -76,7 +66,6 @@ class VoteListActivity : AppCompatActivity() {
             "http://203.249.127.32:65001/bote/vote/voteresulter/votergetlist/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
-                    Log.d("ptext", response.toString() + "qweqweqweqe")
                     val arr_getResultList = JSONArray(response.toString())
 
                     var string2 = arr_getResultList.toString()

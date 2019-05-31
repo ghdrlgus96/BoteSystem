@@ -2,9 +2,7 @@ package embedded.block.vote
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +16,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.alert_list_item.view.*
-import kotlinx.android.synthetic.main.list_item_shop.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
@@ -32,12 +28,10 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
         var result_left = JSONArray()
         var result_right = JSONArray()
     }
-    /* 리스트뷰에서 보여줄 아이템(항목) 화면의 인플레이션을 위해 LayoutInflater 참조 */
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
 
     override fun getCount(): Int {
-        Log.d("ktext", "!!"+arr_getPage.length().toString())
         return arr_getPage.length()
     }
 
@@ -66,13 +60,13 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
             var json_bote = JSONObject()
             json_bote.put("voteNum", voteNum)
             json_bote.put("userNum", LoginActivity.userNum)
-            Log.d("etest", "보내기실행")
+
             var queue0: RequestQueue = Volley.newRequestQueue(context)
             val request0 = object : JsonObjectRequest(
                 Request.Method.PUT, "http://203.249.127.32:65001/bote/vote/votestarter/index", json_bote,
                 Response.Listener { response ->
                     run {
-                        Log.d("tetest", "65009")
+
                     }
                 }, null
             ) {
@@ -89,7 +83,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                 Request.Method.POST, "http://203.249.127.32:65009/vlock/index", json,
                 Response.Listener { response ->
                     run {
-                        Log.d("tetest", "65009")
+
                     }
                 }, null
             ) {
@@ -107,7 +101,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                 Request.Method.POST, "http://203.249.127.32:65010/vlock/index", json,
                 Response.Listener { response ->
                     run {
-                        Log.d("tetest", "65010")
+
                     }
                 }, null
             ) {
@@ -125,7 +119,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                 Request.Method.POST, "http://203.249.127.32:65011/vlock/index", json,
                 Response.Listener { response ->
                     run {
-                        Log.d("tetest", "65011")
+
                     }
                 }, null
             ) {
@@ -136,6 +130,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                 }
             }
             queue2.add(request2)
+
             var handler = Handler()
             handler.postDelayed({
                 var queue3: RequestQueue = Volley.newRequestQueue(context)
@@ -146,7 +141,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                         run {
                             var tmp_string = response.toString()
                             result_main = JSONArray(tmp_string)
-                            Log.d("etest", result_main.toString())
                         }
                     },
                     null
@@ -168,7 +162,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                         run {
                             var tmp_string = response.toString()
                             result_left = JSONArray(tmp_string)
-                            Log.d("etest", result_left.toString())
                         }
                     },
                     null
@@ -191,7 +184,6 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                         run {
                             var tmp_string = response.toString()
                             result_right = JSONArray(tmp_string)
-                            Log.d("etest", result_right.toString())
                         }
                     },
                     null
@@ -204,6 +196,7 @@ class AlertListViewAdapter(val context: Context, val quittime: String, val voteN
                     }
                 }
                 queue5.add(request5)
+
                 for(i in 0..(VoteListAdapter.arr_getList.length()-1))
                 {
                     if(VoteListAdapter.arr_getList.getJSONObject(i).getInt("voteNum").toString() == voteNum)

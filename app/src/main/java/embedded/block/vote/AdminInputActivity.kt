@@ -2,12 +2,9 @@ package embedded.block.vote
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.ListView
 import com.android.volley.AuthFailureError
@@ -42,7 +39,7 @@ class AdminInputActivity : AppCompatActivity() {
                 run {
                     val arr_getPart = JSONArray(response.toString())
                     var string = arr_getPart.toString()
-                    //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌
+
                     AdminInputAdapter.arr_getParticipation = JSONArray(string)
                     var adapter = AdminInputAdapter(this)
                     listview_admin_input_select.adapter = adapter
@@ -56,7 +53,7 @@ class AdminInputActivity : AppCompatActivity() {
                         override fun afterTextChanged(s: Editable?) {
 
                             var string2 = arr_getPart.toString()
-                            //arr_getPart는 최초의 JSONArray를 저장하고, 해당 값을 직접 접근하지 않도록 스트링으로 저장한 후에 넘겨줌ㅇ
+
                             AdminInputAdapter.arr_getParticipation = JSONArray(string2)
                             check()
                             adapter.notifyDataSetChanged()
@@ -64,25 +61,20 @@ class AdminInputActivity : AppCompatActivity() {
                             handler.postDelayed(Runnable {
 
 
-                            var i = 0   //i는 반복문을 돌리기 위한 변수
+                            var i = 0
                             var temp = 0
-                            //리스트에서 해당 요소 위치를 찾아 JSONarray에서 제거해도 리스트에서는 바로 제거가 안됨
-                            //따라서 제거된 요소만큼 리스트의 위치를 늘려줄 변수가 필요함. temp 선언
                             var temp2 = 0
-                            //0의 위치 부터 제거하지 않은 요소의 갯수를 세고 해당 요소부터 반복문 시작
                             var num =
                                 findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
                                     R.id.listview_admin_input_select
                                 ).firstVisiblePosition
                             while (true) {
-                                Log.d("etest", "된다능느응느은" + num)
                                 if (i > num)
                                     break
                                 if (!findViewById<ListView>(R.id.listview_admin_input_select).getChildAt(i + temp).textView_admin_input_item1.text.contains(
                                         editText_admin_input_search.text
                                     )
                                 ) {
-
                                     temp++
                                     AdminInputAdapter.arr_getParticipation.remove(i)
                                     check()
@@ -99,7 +91,7 @@ class AdminInputActivity : AppCompatActivity() {
 
                             }
                             }, 100)
-                        } //검색 기능 구현
+                        }
 
                     })
 
@@ -114,13 +106,13 @@ class AdminInputActivity : AppCompatActivity() {
                         }
                         setResult(0, intent.putExtra("userNum", arr))
                         finish()
-                    }  //선택 완료 버튼 눌렀을때
+                    }
                     button_admin_input_finish.setOnClickListener { v: View? ->
 
                         setResult(666, intent.putExtra("finish", "종료"))
                         finish()
 
-                    }  //취소 버튼 눌렀을때
+                    }
 
                     button_admin_input_allselect.setOnClickListener { v: View? ->
                         var temp = true
@@ -144,9 +136,9 @@ class AdminInputActivity : AppCompatActivity() {
                                 }
                             }
                         }
-                    } //전체 선택 버튼 눌렀을때
+                    }
                 }
-            },  //소속에 속한 유권자들 불러오는 서버 통신
+            },
             null
         ) {
             @Throws(AuthFailureError::class)
@@ -159,14 +151,13 @@ class AdminInputActivity : AppCompatActivity() {
         queue.add(request)
         supportActionBar?.title = "참여자 선택"
     }
-    //중복 회원를 제거하는 함수
+
     fun check() {
         for (i in (0..AdminInputAdapter.arr_getParticipation.length() - 1)) {
             for (j in (i..AdminInputAdapter.arr_getParticipation.length() - 1)) {
                 if (i != j && AdminInputAdapter.arr_getParticipation.getJSONObject(i).getInt("userNum") ==
                     AdminInputAdapter.arr_getParticipation.getJSONObject(j).getInt("userNum")
                 ) {
-                    Log.d("etest", "껄껄")
                     var inputstring =
                         AdminInputAdapter.arr_getParticipation.getJSONObject(i).getString("userClass")
                     var outstring =

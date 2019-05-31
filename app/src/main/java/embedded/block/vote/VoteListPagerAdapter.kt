@@ -3,9 +3,6 @@ package embedded.block.vote
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import embedded.block.vote.FirstFragment
-import embedded.block.vote.SecondFragment
-import embedded.block.vote.ThirdFragment
 
 class VoteListPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm)
 {
@@ -14,7 +11,6 @@ class VoteListPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm)
     override fun getCount(): Int {
         return PAGE_MAX_CNT
     }
-//각 viewpager 띄울 화면 설정
     override fun getItem(position: Int): Fragment? {
         val fragment = when(position)
         {
@@ -24,7 +20,6 @@ class VoteListPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm)
         }
         return fragment
     }
-//Viewpager의 tablayout제목 설정
     override fun getPageTitle(position: Int): CharSequence? {
         val title = when(position)
         {

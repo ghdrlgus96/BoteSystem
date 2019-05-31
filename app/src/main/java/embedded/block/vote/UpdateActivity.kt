@@ -1,9 +1,7 @@
 package embedded.block.vote
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.android.volley.AuthFailureError
@@ -12,13 +10,11 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_update.*
 import org.json.JSONObject
 import java.util.HashMap
 
 class UpdateActivity : AppCompatActivity() {
-
     var myclass = ArrayList<String>()
     var myAuthor: String? = LoginActivity.userAuthor
 
@@ -29,6 +25,7 @@ class UpdateActivity : AppCompatActivity() {
         changePassText.setText(LoginActivity.userPass)
         changePassCheckText.setText(LoginActivity.userPass)
         changePhoneText.setText(LoginActivity.userPhone)
+
         if(LoginActivity.userAuthor == "1")
             changeAuthor1.isChecked = true
         else if(LoginActivity.userAuthor == "2")
@@ -42,7 +39,6 @@ class UpdateActivity : AppCompatActivity() {
             Request.Method.GET, "http://203.249.127.32:65001/bote/accountmanager/getclass/?mynum=" + LoginActivity.userNum, json,
             Response.Listener { response ->
                 run {
-
                     var tmp = response.getString("userclass")
                     var tempList = tmp.split(",")
 

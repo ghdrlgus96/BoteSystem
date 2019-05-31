@@ -1,15 +1,9 @@
 package embedded.block.vote
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -18,12 +12,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.admin_result_list.*
-import kotlinx.android.synthetic.main.admin_start.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.text.SimpleDateFormat
 import java.util.HashMap
 
 class AdminResultActivity : AppCompatActivity() {
@@ -73,8 +64,6 @@ class AdminResultActivity : AppCompatActivity() {
                         tempVoteScore.add(temp.getJSONObject(i).getString("canScore"))
                     }
 
-                    Log.d("testst", tempVoteScore.toString() + "1")
-
                     for(i in 0..tempVoteScore.size-1)
                         check = check + tempVoteScore.get(i).toInt()
                 }
@@ -108,8 +97,6 @@ class AdminResultActivity : AppCompatActivity() {
                         tempVoteScore1.add(temp1.getJSONObject(i).getString("canScore"))
                     }
 
-                    Log.d("testst", tempVoteScore1.toString() + "2")
-
                     for(i in 0..tempVoteScore.size-1)
                         check1 = check1 + tempVoteScore1.get(i).toInt()
                 }
@@ -142,8 +129,6 @@ class AdminResultActivity : AppCompatActivity() {
                         tempVoteCandidate2.add(temp2.getJSONObject(i).getString("voteCandidate"))
                         tempVoteScore2.add(temp2.getJSONObject(i).getString("canScore"))
                     }
-
-                    Log.d("testst", tempVoteScore2.toString() + "3")
 
                     for(i in 0..tempVoteScore.size-1)
                         check2 = check2 + tempVoteScore2.get(i).toInt()
@@ -241,8 +226,6 @@ class AdminResultActivity : AppCompatActivity() {
                 json.put("voteCandidate", tempVoteCandidate2)
                 json.put("voteScore", tempVoteScore2)
             }
-
-            Log.d("testst", " " + check + "   " + check1 + "   " + check2)
 
             var queue2: RequestQueue = Volley.newRequestQueue(this);
             val request2 = object : JsonObjectRequest(

@@ -2,8 +2,6 @@ package embedded.block.vote
 
 import android.app.AlertDialog
 import android.content.Context
-import android.renderscript.ScriptGroup
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +14,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.gson.JsonArray
-import kotlinx.android.synthetic.main.admin_stop.*
 import kotlinx.android.synthetic.main.admin_stop_item.view.*
 import org.json.JSONArray
-import java.text.SimpleDateFormat
 import java.util.HashMap
 
 class AdminStopAdapter(val context: Context): BaseAdapter() {
@@ -49,7 +44,6 @@ class AdminStopAdapter(val context: Context): BaseAdapter() {
             alertDialogBuilder.setMessage("정말 투표를 종료하시겠습니까?")
             alertDialogBuilder.setCancelable(false)
             alertDialogBuilder.setPositiveButton("종료") { dialog, id ->
-                Log.d("etest", "실행??")
                 var queue: RequestQueue = Volley.newRequestQueue(context);
                 val request = object : StringRequest(
                     Request.Method.PUT,
@@ -74,7 +68,6 @@ class AdminStopAdapter(val context: Context): BaseAdapter() {
             }
 
             alertDialogBuilder.setNegativeButton("취소") { dialog, id ->
-                Log.d("etest", "취소실행")
                 dialog.dismiss()
             }
 

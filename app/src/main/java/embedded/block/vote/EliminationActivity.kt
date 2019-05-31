@@ -1,6 +1,5 @@
 package embedded.block.vote
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,7 +31,6 @@ class EliminationActivity : AppCompatActivity() {
     fun elimination() {
         var json = JSONObject()
         json.put("mynum", LoginActivity.userNum)
-        //json.put("mynum", 6)
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(

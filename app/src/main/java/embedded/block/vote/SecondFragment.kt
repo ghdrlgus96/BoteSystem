@@ -3,15 +3,10 @@ package embedded.block.vote
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import embedded.block.vote.R
-import kotlinx.android.synthetic.main.fragment_first.*
-import kotlinx.android.synthetic.main.fragment_first.view.*
 import kotlinx.android.synthetic.main.fragment_second.*
-import kotlinx.android.synthetic.main.fragment_second.view.*
 
 
 class SecondFragment: Fragment()
@@ -45,7 +40,6 @@ class SecondFragment: Fragment()
 
             var intent = Intent(activity, VoteResultActivity::class.java)
             intent.putExtra("votenum",VoteListActivity.resultVoteNumber[position])
-            //Log.d("ktext",VoteListActivity.voteNumber[position])
             startActivity(intent)
         }
     }

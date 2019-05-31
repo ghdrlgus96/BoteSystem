@@ -37,7 +37,10 @@ class AdminInputActivity : AppCompatActivity() {
             "http://203.249.127.32:65001/bote/vote/votemaker/getparticipation/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
+                    AdminInputAdapter.checkValue.clear()
                     val arr_getPart = JSONArray(response.toString())
+                    for(i in 0..(arr_getPart.length()-1))
+                        arr_getPart.getJSONObject(i).put("initNum", i)
                     var string = arr_getPart.toString()
 
                     AdminInputAdapter.arr_getParticipation = JSONArray(string)
@@ -51,58 +54,34 @@ class AdminInputActivity : AppCompatActivity() {
                         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
                         override fun afterTextChanged(s: Editable?) {
-
-                            var string2 = arr_getPart.toString()
-
+                            var string2 = string
                             AdminInputAdapter.arr_getParticipation = JSONArray(string2)
                             check()
                             adapter.notifyDataSetChanged()
                             var handler = Handler()
                             handler.postDelayed(Runnable {
-
-
-                            var i = 0
-                            var temp = 0
-                            var temp2 = 0
-                            var num =
-                                findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
-                                    R.id.listview_admin_input_select
-                                ).firstVisiblePosition
-                            while (true) {
-                                if (i > num)
-                                    break
-                                if (!findViewById<ListView>(R.id.listview_admin_input_select).getChildAt(i + temp).textView_admin_input_item1.text.contains(
-                                        editText_admin_input_search.text
-                                    )
-                                ) {
-                                    temp++
-                                    AdminInputAdapter.arr_getParticipation.remove(i)
-                                    check()
-                                    adapter.notifyDataSetChanged()
-                                    num = num - 1
-                                    findViewById<ListView>(R.id.listview_admin_input_select).lastVisiblePosition - findViewById<ListView>(
-                                        R.id.listview_admin_input_select
-                                    ).firstVisiblePosition
-                                    i = temp2
-                                } else {
-                                    i++
-                                    temp2++
+                                var i = 0;
+                                while (i <= AdminInputAdapter.arr_getParticipation.length()-1) {
+                                    if(!AdminInputAdapter.arr_getParticipation.getJSONObject(i).getString("userName").contains(editText_admin_input_search.text)) {
+                                        AdminInputAdapter.arr_getParticipation.remove(i)
+                                        i = 0;
+                                        adapter.notifyDataSetChanged()
+                                        check()
+                                    }
+                                    else
+                                        i++
                                 }
 
-                            }
-                            }, 100)
-                        }
+                            }, 300)}
 
                     })
 
                     button_admin_input_select.setOnClickListener { v: View? ->
+                        AdminInputAdapter.arr_getParticipation = JSONArray(string)
                         var arr = ArrayList<Int>()
                         var arr_userNum = ArrayList<Int>()
-                        for (i in 0..(adapter.count - 1)) {
-                            val view = listview_admin_input_select.getChildAt(i)
-                            if (view.checkBox.isChecked == true) {
-                                arr.add(i)
-                            }
+                        for (i in 0..(AdminInputAdapter.checkValue.size-1)) {
+                            arr.add(AdminInputAdapter.checkValue[i])
                         }
                         setResult(0, intent.putExtra("userNum", arr))
                         finish()
@@ -115,27 +94,28 @@ class AdminInputActivity : AppCompatActivity() {
                     }
 
                     button_admin_input_allselect.setOnClickListener { v: View? ->
-                        var temp = true
-                        for (i in 0..(adapter.count - 1)) {
-                            val view = listview_admin_input_select.getChildAt(i)
-                            if (view.checkBox.isChecked == false) {
-                                break
-                            }
-                            if (i == (adapter.count - 1) && listview_admin_input_select.getChildAt(i).checkBox.isChecked == true)
-                                for (i in 0..(adapter.count - 1)) {
-                                    val view = listview_admin_input_select.getChildAt(i)
-                                    view.checkBox.isChecked = false
-                                    temp = false
-                                }
-                        }
-                        if (temp == true) {
-                            for (i in 0..(adapter.count - 1)) {
-                                val view = listview_admin_input_select.getChildAt(i)
-                                if (view.checkBox.isChecked == false) {
-                                    view.checkBox.isChecked = true
+                        var temp = false;
+                        var count = 0;
+                        for(i in 0 until AdminInputAdapter.arr_getParticipation.length()) {
+                            for(j in 0 until AdminInputAdapter.checkValue.size) {
+                                if(AdminInputAdapter.checkValue[j] == AdminInputAdapter.arr_getParticipation.getJSONObject(i).getInt("initNum")) {
+                                    count++;
                                 }
                             }
+                            if(count == AdminInputAdapter.arr_getParticipation.length())
+                                temp = true
+                            if(!temp) {
+                                AdminInputAdapter.checkValue.add(
+                                    AdminInputAdapter.arr_getParticipation.getJSONObject(i).getInt(
+                                        "initNum"
+                                    )
+                                )
+                            }
+                            else if(temp == true) {
+                                AdminInputAdapter.checkValue.clear()
+                            }
                         }
+                        adapter.notifyDataSetChanged()
                     }
                 }
             },

@@ -133,8 +133,10 @@ class AdminInputActivity : AppCompatActivity() {
     }
 
     fun check() {
-        for (i in (0..AdminInputAdapter.arr_getParticipation.length() - 1)) {
-            for (j in (i..AdminInputAdapter.arr_getParticipation.length() - 1)) {
+        var i = 0
+        var j = 0
+        while (i in (0..AdminInputAdapter.arr_getParticipation.length() - 1)) {
+            while (j in (i..AdminInputAdapter.arr_getParticipation.length() - 1)) {
                 if (i != j && AdminInputAdapter.arr_getParticipation.getJSONObject(i).getInt("userNum") ==
                     AdminInputAdapter.arr_getParticipation.getJSONObject(j).getInt("userNum")
                 ) {
@@ -146,8 +148,12 @@ class AdminInputActivity : AppCompatActivity() {
                     AdminInputAdapter.arr_getParticipation.getJSONObject(i)
                         .put("userClass", inputstring + outstring)
                     AdminInputAdapter.arr_getParticipation.remove(j)
+                    i = 0
+                    j = 0
                 }
+                j++
             }
+            i++
         }
     }
 }

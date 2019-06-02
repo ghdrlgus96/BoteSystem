@@ -1,25 +1,40 @@
 package embedded.block.vote
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.AnimatedImageDrawable
+import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDialog
+import android.text.TextUtils
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
+import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import java.util.*
+import com.android.volley.DefaultRetryPolicy
+
+
 
 
 class LoginActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        ipAdress = "http://192.9.44.53:"
 
 
         regBtn.setOnClickListener {
@@ -28,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener {
+            progressON(this, "로그인중")
             login(myID.text.toString(), myPass.text.toString())
         }
 
@@ -47,9 +63,10 @@ class LoginActivity : AppCompatActivity() {
         json.put("myid", "null!")
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
-        val request = object : JsonObjectRequest(Request.Method.GET, "http://203.249.127.32:65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
+        val request = object : JsonObjectRequest(Request.Method.GET, ipAdress + "65001/bote/login/?myid=" + myid + "&mypass=" + mypass, json,
             Response.Listener { response ->
                 run {
+                    progressOFF()
                     userClass.clear()
                     if(response.getString("userauthor") != "undefind") {
                         var tmp = response.getString("userclassnum")
@@ -82,7 +99,13 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "아이디 혹은 비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }, null
+            }, Response.ErrorListener {
+                ipAdress = "http://203.249.127.32:"
+                Log.d("etest", ipAdress)
+                retryCount++
+                if(retryCount <= 2)
+                login(myid, mypass)
+            }
         ) {
             @Throws(AuthFailureError::class)
             override fun getHeaders(): MutableMap<String, String>? {
@@ -93,7 +116,58 @@ class LoginActivity : AppCompatActivity() {
         }
         queue.add(request)
     }
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun progressON(activity: Activity?, message: String) {
 
+        if (activity == null || activity.isFinishing) {
+            return
+        }
+
+
+        if (progressDialog != null && progressDialog!!.isShowing()) {
+            progressSET(message)
+        } else {
+
+            progressDialog = AppCompatDialog(activity)
+            progressDialog?.setCancelable(false)
+            progressDialog?.getWindow()!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            progressDialog?.setContentView(R.layout.progress_loading)
+            progressDialog?.show()
+
+        }
+
+
+        val img_loading_frame = progressDialog?.findViewById<ImageView>(R.id.iv_frame_loading) as ImageView
+        img_loading_frame.setImageDrawable(resources.getDrawable(R.drawable.loading))
+        val frameAnimation = img_loading_frame.drawable as AnimatedImageDrawable
+        img_loading_frame.post { frameAnimation.start() }
+
+        val tv_progress_message = progressDialog?.findViewById<TextView>(R.id.tv_progress_message) as TextView
+        if (!TextUtils.isEmpty(message)) {
+            tv_progress_message.text = message
+        }
+
+
+    }
+
+
+    fun progressOFF() {
+        if (progressDialog != null && progressDialog!!.isShowing) {
+            progressDialog!!.dismiss()
+        }
+    }
+    fun progressSET(message: String) {
+
+        if (progressDialog == null || !progressDialog!!.isShowing) {
+            return
+        }
+
+        val tv_progress_message = progressDialog?.findViewById<View>(R.id.tv_progress_message) as TextView?
+        if (!TextUtils.isEmpty(message)) {
+            tv_progress_message!!.text = message
+        }
+
+    }
     //user 정보 저장합니다
     companion object {
         var userId = ""
@@ -103,5 +177,8 @@ class LoginActivity : AppCompatActivity() {
         var userClass = ArrayList<String>()
         var userPhone = ""
         var userAuthor = ""
+        var ipAdress = ""
+        var retryCount = 0
+        var progressDialog : AppCompatDialog? = null
     }
 }

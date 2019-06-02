@@ -24,13 +24,13 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import java.util.*
 import com.android.volley.DefaultRetryPolicy
-
-
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
 
 
 class LoginActivity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.P)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
             Response.Listener { response ->
                 run {
                     progressOFF()
+                    retryCount = 0
                     userClass.clear()
                     if(response.getString("userauthor") != "undefind") {
                         var tmp = response.getString("userclassnum")
@@ -100,11 +101,19 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }, Response.ErrorListener {
-                ipAdress = "http://203.249.127.32:"
-                Log.d("etest", ipAdress)
                 retryCount++
-                if(retryCount <= 2)
-                login(myid, mypass)
+                if(retryCount <= 2) {
+                    if(ipAdress == "http://203.249.127.32:")
+                        ipAdress = "http://192.9.44.53:"
+                    else
+                        ipAdress = "http://203.249.127.32:"
+                    login(myid, mypass)
+                }
+
+                else {
+                    progressOFF()
+                    Toast.makeText(this, "서버가 작동중이 아닙니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         ) {
             @Throws(AuthFailureError::class)
@@ -116,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
         }
         queue.add(request)
     }
-    @RequiresApi(Build.VERSION_CODES.P)
+
     fun progressON(activity: Activity?, message: String) {
 
         if (activity == null || activity.isFinishing) {
@@ -136,11 +145,9 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-
         val img_loading_frame = progressDialog?.findViewById<ImageView>(R.id.iv_frame_loading) as ImageView
-        img_loading_frame.setImageDrawable(resources.getDrawable(R.drawable.loading))
-        val frameAnimation = img_loading_frame.drawable as AnimatedImageDrawable
-        img_loading_frame.post { frameAnimation.start() }
+        var gifImg = GlideDrawableImageViewTarget(img_loading_frame)
+        Glide.with(this).load(R.drawable.loading).into(gifImg)
 
         val tv_progress_message = progressDialog?.findViewById<TextView>(R.id.tv_progress_message) as TextView
         if (!TextUtils.isEmpty(message)) {

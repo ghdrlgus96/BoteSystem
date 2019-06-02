@@ -47,7 +47,7 @@ class AdminStopAdapter(val context: Context): BaseAdapter() {
                 var queue: RequestQueue = Volley.newRequestQueue(context);
                 val request = object : StringRequest(
                     Request.Method.PUT,
-                    "http://203.249.127.32:65001/bote/vote/voteupdater/quitvote/?voteNum=" + getItem(position).getInt("voteNum"),
+                    LoginActivity.ipAdress+"65001/bote/vote/voteupdater/quitvote/?voteNum=" + getItem(position).getInt("voteNum"),
                     Response.Listener { response ->
                         run {
                             Toast.makeText(context, "중단 완료", Toast.LENGTH_SHORT).show()

@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.GET, "http://203.249.127.32:65001/bote/register/getquestion", json,
+            Request.Method.GET, LoginActivity.ipAdress+"65001/bote/register/getquestion", json,
             Response.Listener { response ->
                 run {
                     var temp1 = response.getString("passquestionnum").split(",")
@@ -109,7 +109,7 @@ class RegisterActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.POST, "http://203.249.127.32:65001/bote/register/index", json,
+            Request.Method.POST, LoginActivity.ipAdress+"65001/bote/register/index", json,
             Response.Listener { response ->
                 run {
                     if(response.getString("result") == "fail")

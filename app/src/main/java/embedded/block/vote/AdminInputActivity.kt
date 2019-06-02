@@ -34,7 +34,7 @@ class AdminInputActivity : AppCompatActivity() {
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : StringRequest(
             Request.Method.GET,
-            "http://203.249.127.32:65001/bote/vote/votemaker/getparticipation/?userNum=" + LoginActivity.userNum,
+            LoginActivity.ipAdress+"65001/bote/vote/votemaker/getparticipation/?userNum=" + LoginActivity.userNum,
             Response.Listener { response ->
                 run {
                     AdminInputAdapter.checkValue.clear()

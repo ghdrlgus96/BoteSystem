@@ -31,7 +31,7 @@ class FindidActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.POST, "http://203.249.127.32:65001/bote/find/id", json,
+            Request.Method.POST, LoginActivity.ipAdress+"65001/bote/find/id", json,
             Response.Listener { response ->
                 run {
                     if(response.getString("userid") == "undefined")

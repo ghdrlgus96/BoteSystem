@@ -41,7 +41,7 @@ public class AdminVoteStart extends AppCompatActivity implements View.OnClickLis
         th = this;
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
-        final String url = "http://203.249.127.32:65001/bote/vote/voteupdater/getlist/?userNum="+LoginActivity.Companion.getUserNum();
+        final String url = LoginActivity.Companion.getIpAdress()+"65001/bote/vote/voteupdater/getlist/?userNum="+LoginActivity.Companion.getUserNum();
 
 
         queue = Volley.newRequestQueue(this);

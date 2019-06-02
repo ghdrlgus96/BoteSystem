@@ -36,7 +36,7 @@ class UpdateActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.GET, "http://203.249.127.32:65001/bote/accountmanager/getclass/?mynum=" + LoginActivity.userNum, json,
+            Request.Method.GET, LoginActivity.ipAdress+"65001/bote/accountmanager/getclass/?mynum=" + LoginActivity.userNum, json,
             Response.Listener { response ->
                 run {
                     var tmp = response.getString("userclass")
@@ -108,7 +108,7 @@ class UpdateActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.POST, "http://203.249.127.32:65001/bote/accountmanager/update", json,
+            Request.Method.POST, LoginActivity.ipAdress+"65001/bote/accountmanager/update", json,
             Response.Listener { response ->
                 run {
                     if(response.getString("result") == "fail")

@@ -5,20 +5,44 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:background="@drawable/check_background">
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:id="@+id/horizontalScrollView"
+                          app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          android:layout_marginStart="40dp" android:layout_marginEnd="16dp"
+                          android:fillViewport="true">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-            android:text="투표 주제"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_admin_stopName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="24dp"
-            android:layout_marginStart="40dp"/>
-    <Button
-            android:text="중단요청"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_admin_stopButton" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp" android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            >
+                <TextView
+                        android:text="투표 주제"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_admin_stopName"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView10" android:layout_weight="1"/>
+
+            <Button
+                    android:text="중단요청"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_admin_stopButton"
+                    android:layout_marginTop="8dp"
+            />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
 </android.support.constraint.ConstraintLayout>

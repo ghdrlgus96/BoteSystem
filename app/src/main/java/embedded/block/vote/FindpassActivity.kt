@@ -39,7 +39,7 @@ class FindpassActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.GET, "http://203.249.127.32:65001/bote/find/password/getquestion/?myid=" + id, json,
+            Request.Method.GET, LoginActivity.ipAdress+"65001/bote/find/password/getquestion/?myid=" + id, json,
             Response.Listener { response ->
                 run {
                     if(response.getString("mypassquestion") == "undefind")
@@ -67,7 +67,7 @@ class FindpassActivity : AppCompatActivity() {
 
         var queue: RequestQueue = Volley.newRequestQueue(this);
         val request = object : JsonObjectRequest(
-            Request.Method.POST, "http://203.249.127.32:65001/bote/find/password/index", json,
+            Request.Method.POST, LoginActivity.ipAdress+"65001/bote/find/password/index", json,
             Response.Listener { response ->
                 run {
                     if(response.getString("mypass") == "undefind")

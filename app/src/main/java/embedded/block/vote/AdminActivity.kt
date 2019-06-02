@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
@@ -133,7 +134,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                         var queue: RequestQueue = Volley.newRequestQueue(this);
                         val request = object : JsonObjectRequest(
                             Request.Method.POST,
-                            "http://203.249.127.32:65001/bote/vote/votemaker",
+                            LoginActivity.ipAdress+"65001/bote/vote/votemaker",
                             json_toServer,
                             Response.Listener { response ->
                                 run {
@@ -170,7 +171,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 var queue: RequestQueue = Volley.newRequestQueue(this);
                 val request = object : StringRequest(
                     Request.Method.GET,
-                    "http://203.249.127.32:65001/bote/vote/voteupdater/getlist/?userNum=" + LoginActivity.userNum,
+                    LoginActivity.ipAdress+"65001/bote/vote/voteupdater/getlist/?userNum=" + LoginActivity.userNum,
                     Response.Listener { response ->
                         run {
                             var arr_getlist = JSONArray(response.toString())
@@ -210,7 +211,7 @@ class AdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
                 val request = object : StringRequest(
                     Request.Method.GET,
-                    "http://203.249.127.32:65001/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
+                    LoginActivity.ipAdress+"65001/bote/vote/voteresulter/admingetlist/?userNum=" + LoginActivity.userNum,
                     Response.Listener { response ->
                         run {
                             var arr_getlist = JSONArray(response.toString())

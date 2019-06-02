@@ -27,7 +27,7 @@ class VotepageActivity : AppCompatActivity() {
         json.put("voteNum", "null")
         var queue: RequestQueue = Volley.newRequestQueue(this)
         val request = object : StringRequest(
-            Request.Method.GET, "http://203.249.127.32:65001/bote/vote/votestarter/getcandidate/?voteNum=" + votenum,
+            Request.Method.GET, LoginActivity.ipAdress+"65001/bote/vote/votestarter/getcandidate/?voteNum=" + votenum,
             Response.Listener { response ->
                 run {
                     val arr_getPage = JSONArray(response.toString())

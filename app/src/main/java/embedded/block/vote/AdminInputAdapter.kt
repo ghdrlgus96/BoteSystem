@@ -33,7 +33,6 @@ class AdminInputAdapter(val context: Context) : BaseAdapter() {
         var temp2 = false
         for(i in 0..(checkValue.size-1)){
             if(checkValue[i] == getItem(position).getInt("initNum")) {
-                Log.d("etest", "나오조!!")
                 view.findViewById<CheckBox>(R.id.checkBox_select).isChecked = true
                 temp2 = true
                 break;
@@ -61,7 +60,6 @@ class AdminInputAdapter(val context: Context) : BaseAdapter() {
                     checkValue.add(getItem(position).getInt("initNum"))
             }
             else if(!view.findViewById<CheckBox>(R.id.checkBox_select).isChecked) {
-                Log.d("etest", "없어지지마" + position)
                 var i = 0;
                 while(i <= checkValue.size-1) {
                     if(checkValue[i] == getItem(position).getInt("initNum")) {
